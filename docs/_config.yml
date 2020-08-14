@@ -27,11 +27,9 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 <<<<<<< HEAD
-theme: minimal-mistakes-jekyll
 
 =======
 theme: minima
->>>>>>> parent of 402d851... Set theme jekyll-theme-minimal
 plugins:
   - jekyll-feed
 
