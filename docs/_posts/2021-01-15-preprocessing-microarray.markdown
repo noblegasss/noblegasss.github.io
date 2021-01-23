@@ -84,7 +84,7 @@ Current R package `affy` uses median polish to estimate the $\theta$s.
 
 $$Y_{ijkn} = \theta_{in}+\phi_{jn}+\gamma_{jkn}+\epsilon_{ijkn}\quad\quad (2)$$
 
-- \(k \in 1,...,K\( represent batch and random-effect term and $\gamma$  explains the variability in probe effects across batches.
+- \(k \in 1,...,K\) represent batch and random-effect term and $\gamma$  explains the variability in probe effects across batches.
 
 Frozen RMA removed the batch effect from each intensity and create a probe effect-corrected intensity:
 
