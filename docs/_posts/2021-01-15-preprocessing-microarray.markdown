@@ -43,9 +43,7 @@ BiocManager::install("affy")
 library(affy)
 ```
 
-Full description of `affy` on Bioconductor: 
-
-[affy](https://www.bioconductor.org/packages/release/bioc/html/affy.html)
+Full description of `affy` on Bioconductor: [affy](https://www.bioconductor.org/packages/release/bioc/html/affy.html)
 
 ## Download data
 
@@ -64,9 +62,7 @@ pinfo_25055 <- pData(phenoData(getGEO("GSE25055")[[1]]))
 
 ## fRMA process
 
-Full desciption of `fRMA`: 
-
-[frma](http://bioconductor.org/packages/release/bioc/html/frma.html)
+Full desciption of `fRMA`: [frma](http://bioconductor.org/packages/release/bioc/html/frma.html)
 
 ### Normal RMA
 
