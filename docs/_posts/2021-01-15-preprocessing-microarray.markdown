@@ -5,10 +5,16 @@ date:   2021-01-15 15:21:14 -0400
 categories: Bioinformatics Notes
 ---
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script>
+    renderMathInElement(document.body,{delimiters: [
+    					{left: "$$", right: "$$", display: true},
+					  {left: "$", right: "$", display: false}
+]});
+
+</script>
 
 # Background
 
@@ -84,7 +90,7 @@ Current R package `affy` uses median polish to estimate the $\theta$s.
 
 $$Y_{ijkn} = \theta_{in}+\phi_{jn}+\gamma_{jkn}+\epsilon_{ijkn}\quad\quad (2)$$
 
-- \(k \in 1,...,K\) represent batch and random-effect term and $\gamma$  explains the variability in probe effects across batches.
+- $k \in 1,...,K$ represent batch and random-effect term and $\gamma$  explains the variability in probe effects across batches.
 
 Frozen RMA removed the batch effect from each intensity and create a probe effect-corrected intensity:
 
