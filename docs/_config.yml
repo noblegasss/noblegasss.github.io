@@ -23,6 +23,8 @@ markdown: kramdown
 kramdown:
     math_engine: katex
 
+permalink: /:categories/:title/
+
 show_excerpts: false
 
 minima:
