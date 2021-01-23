@@ -104,7 +104,7 @@ expp<-exprs(object)
 colnames(expp)<-substr(colnames(expp),1,9)
 ```
 
-## Filter probe
+## Filter probes
 
 Use probe with largest IQR to represent the gene
 
