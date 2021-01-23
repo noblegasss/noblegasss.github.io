@@ -1,15 +1,11 @@
 ---
 layout: post
 title:  "Preprocessing Affymetrix Gene Expression Arrays"
-date:   2021-01-13 15:21:14 -0400
+date:   2021-01-15 15:21:14 -0400
 categories: Bioinformatics Notes
 ---
 
 # Preprocessing Affymetrix Gene Expression Arrays
-
-Category: Bioinformatics, Microarray, Preprocessing
-Created: Dec 20, 2020 3:25 PM
-Tags: Learning Note
 
 # Background
 
