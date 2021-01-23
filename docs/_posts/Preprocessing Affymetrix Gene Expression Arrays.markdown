@@ -53,8 +53,6 @@ Full desciption of `fRMA`:
 
 [frma](http://bioconductor.org/packages/release/bioc/html/frma.html)
 
-[Paper related to fRMA](https://www.notion.so/Frozen-robust-multiarray-analysis-fRMA-c4d4a1232aa1483fbef64036e974ff4f).
-
 ### Normal RMA
 
 Robust multiarray analysis (RMA) is the most widely used preprocessing algorithm for Affymetrix and Nimblegen gene expression microarrays. Three steps are performed by RMA: bacckground correction, normalization, and summarization in a modular way.
