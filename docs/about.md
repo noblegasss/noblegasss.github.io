@@ -4,4 +4,4 @@ title: About Me
 permalink: /about/
 ---
 
-# Hi, I'm Nova! Nice to meet you.
+Hi, I'm Nova! Nice to meet you.
