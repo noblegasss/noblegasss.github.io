@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Preprocessing Affymetrix Gene Expression Arrays"
-date:   2021-01-13 15:21:14 -0050
+date:   2021-01-13 15:21:14 -0400
 categories: Bioinformatics Notes
 ---
 
