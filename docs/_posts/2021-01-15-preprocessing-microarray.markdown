@@ -62,7 +62,7 @@ Robust multiarray analysis (RMA) is the most widely used preprocessing algorithm
 - **Normalization:** Quantile normalization forcesthe probe intensity distribution to be thesame on all the arrays.
 - **Summarization:** Summarizing probe intensities into gene expression to be used in downstream analysis.
 
-    $$Y_{ijn} = \theta_{in}+\phi_{jn}+\epsilon_{ijn}\quad\quad (1)$$
+    $$\Y_{ijn} = \theta_{in}+\phi_{jn}+\epsilon_{ijn}\quad\quad (1)$$
 
     - $Y_{ijn}$ representing the $\log_2$ background corrected and normalized intensity of probe $j \in 1,..., J_n$ in probe set $n \in 1,..., N$ on array $i \in 1,..., I$.
     - $\theta_{in}$ is the expression of probe set n on array $i$
