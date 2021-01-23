@@ -5,8 +5,6 @@ date:   2021-01-15 15:21:14 -0400
 categories: Bioinformatics Notes
 ---
 
-# Preprocessing Affymetrix Gene Expression Arrays
-
 # Background
 
 - **GEO** (Gene Expression Omnibus) is a public functional genomics data repository supporting MIAME-compliant data submissions. Array- and sequence-based data are accepted.
