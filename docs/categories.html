@@ -1,24 +1,29 @@
 ---
-layout: page
-permalink: /categories/
-title: Posts
+layout: default
 ---
 
-
-<div id="archives">
-{% for category in site.categories %}
-  <div class="archive-group">
-    {% capture category_name %}{{ category | first }}{% endcapture %}
-    <div id="#{{ category_name | slugize }}"></div>
-    <p></p>
-
-    <h3 class="category-head">{{ category_name }}</h3>
-    <a name="{{ category_name | slugize }}"></a>
-    {% for post in site.categories[category_name] %}
-    <article class="archive-item">
-      <h4><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></h4>
-    </article>
-    {% endfor %}
-  </div>
-{% endfor %}
+<div class="categories">
+    <h1 class="h1 category-title">
+      Topic:&nbsp;{{ page.category-name }}/
+    </h1>
+    <div class="posts">
+      {% for post in site.categories[page.category-name] %}
+        <div class="post py3">
+          <p class="post-meta">
+        {% if site.date_format %}
+            {{ post.date | date: site.date_format }}
+        {% else %}
+            {{ post.date | date: "%b %-d, %Y" }}
+        {% endif %}
+        </p>
+          <a href="{{ post.url | relative_url }}" class="post-link">
+            <h3 class="h1 post-title">
+              {{ post.title }}
+            </h3>
+          </a>
+          <span class="post-summary">
+              {{ post.excerpt }}
+          </span>
+        </div>
+    </div>
 </div>
