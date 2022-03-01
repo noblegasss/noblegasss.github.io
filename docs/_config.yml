@@ -23,7 +23,7 @@ markdown: kramdown
 kramdown:
     math_engine: katex
 
-permalink: /:categories/:title/
+permalink: /:category/:title/
 
 show_excerpts: false
 
