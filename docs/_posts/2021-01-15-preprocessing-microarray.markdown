@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Preprocessing Affymetrix Gene Expression Arrays"
+author: Nova Zhang
 date:   2021-01-15 15:21:14 -0400
 categories: Bioinfo
 ---
