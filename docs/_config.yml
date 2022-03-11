@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: Nova's Workshop
 author:
-  name: Nova
+  name: Nova Zhang
   email: noblegassss@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   I believe in hard work and not in sitting by the fire spinning fine theory.   
