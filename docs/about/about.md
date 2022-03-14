@@ -10,4 +10,4 @@ I am a third-year PhD student in Biostatistics and my research interests are sta
 I'm also a big fan of Philip K. Dick.
 
 
-<a href="https://noblegasss.github.io/assets/ResumeWeiZhang4.pdf" target="_blank">please click here to see my resume.</a> 
+<a href="https://noblegasss.github.io/assets/ResumeWeiZhang4.pdf" target="_blank">Please click here to see my resume.</a> 
