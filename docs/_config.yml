@@ -22,6 +22,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 markdown: kramdown
 kramdown:
     math_engine: katex
+    parse_block_html: true
 
 permalink: /:categories/:title/
 google_analytics: UA-223008037-1
