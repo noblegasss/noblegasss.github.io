@@ -24,7 +24,7 @@ kramdown:
     math_engine: katex
     parse_block_html: true
 
-permalink: /:categories/:title/
+permalink: /about/
 google_analytics: UA-223008037-1
 
 show_excerpts: false
