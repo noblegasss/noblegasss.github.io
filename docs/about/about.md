@@ -17,6 +17,10 @@ I am a third-year PhD student in Biostatistics and my research interests are sta
 
 **My Lab** I'm a member of [Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/)
 
+**My Github** [ 👩🏻‍💻 ](https://github.com/noblegasss)
+
+**My Linkedin** [ 🤝 ](http://linkedin.com/in/nova-weizhang)
+
 --------------------------------------------------
 
 ### Some fun facts about me
