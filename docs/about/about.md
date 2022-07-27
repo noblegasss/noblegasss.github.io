@@ -18,7 +18,7 @@ I am a third-year PhD student in Biostatistics @ University of Miami. My researc
 
 **My Linkedin** [ ☞ 🤝 ](http://linkedin.com/in/nova-weizhang)
 
-**My Email** You can reach me @ [wxz337@miami.edu](wxz337@miami.edu)
+**My Email** You can reach me @ [wxz337@miami.edu](https://wxz337@miami.edu)
 
 --------------------------------------------------
 
