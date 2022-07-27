@@ -1,10 +1,12 @@
 ---
 layout: page
-title: HELLO 👋🏻 Welcome!
+title: About me
 permalink: /about/
 ---
 
 
+
+## Hello 👋🏻 Welcome!
 
 Hi, I'm Nova, an active learner and love to explore the unknown. Nice to meet you!  
 
