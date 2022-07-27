@@ -1,6 +1,4 @@
-## NOVA'S WORKSHOP
-
-Hello 👋🏻! Welcome to my personal blog. 
+## Hello 👋🏻 Welcome!
 
 **About me**  [→→](https://noblegasss.github.io/about/)
 
