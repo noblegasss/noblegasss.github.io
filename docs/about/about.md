@@ -12,10 +12,9 @@ Hi, I'm Nova, an active learner and love to explore the unknown. Nice to meet yo
 
 I am a third-year PhD student in Biostatistics and my research interests are statistical and machine learning methods in high-dimensional genomic data.
 
+**My Lab** I'm a member of [Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/)
 
 **My Resume** <a href="https://noblegasss.github.io/assets/ResumeWeiZhang4.pdf" target="_blank"> ☞ 📄</a> 
-
-**My Lab** I'm a member of [Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/)
 
 **My Github** [ 👩🏻‍💻 ](https://github.com/noblegasss)
 
