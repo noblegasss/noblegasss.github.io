@@ -24,7 +24,19 @@ kramdown:
     math_engine: katex
     parse_block_html: true
 
+<<<<<<< Updated upstream
 permalink:/:categories/:title
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+permalink: /:categories/:title/
+=======
+permalink: about
+>>>>>>> c6bc42f4b0e8664361fdf61a32389ee8995f285e
+=======
+permalink: about
+>>>>>>> c6bc42f4b0e8664361fdf61a32389ee8995f285e
+>>>>>>> Stashed changes
 google_analytics: UA-223008037-1
 
 show_excerpts: false
