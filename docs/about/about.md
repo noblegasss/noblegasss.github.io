@@ -16,9 +16,9 @@ I am a third-year PhD student in Biostatistics and my research interests are sta
 
 **My Resume** <a href="https://noblegasss.github.io/assets/ResumeWeiZhang4.pdf" target="_blank"> ☞ 📄</a> 
 
-**My Github** [ 👩🏻‍💻 ](https://github.com/noblegasss)
+**My Github** [ ☞ 👩🏻‍💻 ](https://github.com/noblegasss)
 
-**My Linkedin** [ 🤝 ](http://linkedin.com/in/nova-weizhang)
+**My Linkedin** [ ☞ 🤝 ](http://linkedin.com/in/nova-weizhang)
 
 --------------------------------------------------
 
