@@ -9,11 +9,11 @@ title: Blog
 {% for category in site.categories %}
   <div class="archive-group">
     {% capture category_name %}{{ category | first }}{% endcapture %}
-    <div id="#{{ category_name | join: " " }}"></div>
+    <div id="#{{ category_name | split: "_" | sort}}"></div>
     <p></p>
 
     <h3 class="category-head">{{ category_name }}</h3>
-    <a name="{{ category_name | join: " " }}"></a>
+    <a name="{{ category_name | split: "_" | sort}}"></a>
     {% for post in site.categories[category_name] %}
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
     <article class="archive-item">
