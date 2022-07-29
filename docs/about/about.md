@@ -27,4 +27,3 @@ I am a third-year PhD student in Biostatistics @ University of Miami. My researc
 ✴︎ 📖 I'm a big fan of Philip K. Dick. Love all his book especially VALIS and DO ANDROIDS DREAM OF ELECTRIC SHEEP?
 
 ✴︎ 🏃🏻‍♀️ I'm a running lover. I ran half Marathon in 2019 Rock 'n' Roll DC. Check on my upcoming 10k running event in Dec. 11, 2022. ➡️ [Islamorada Half Marathon & 10k](https://runsignup.com/Race/FL/Islamorada/Islamoradahalfmarathon?raceRefCode=NOXH0sf2)
-
