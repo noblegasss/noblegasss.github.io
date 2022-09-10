@@ -4,9 +4,7 @@ title: Experience
 permalink: /experience/
 ---
 
-
-
-
+# My Experience
 ---------------------------------------------------------------
 ## Education
 
@@ -39,6 +37,14 @@ permalink: /experience/
     </span>
 </p>
 
+--------------------------------------------------------------
+## Working Paper
 
+- Multivariate random forest data integration
+- DNA methylation associated with CSF biomarkers in Alzheimer’s disease
+- Biomarkers detection of neoadjuvant chemotherapy response on Triple Negative Breast Cancer
 
 --------------------------------------------------------------
+## Publications
+
+Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin ER, Wang L (2022) Distinct sex-specific DNA methylation differences in Alzheimer's disease. Alzheimer's Research & Therapy In Press ([code](https://github.com/TransBioInfoLab/AD-meta-analysis-blood-by-sex))
