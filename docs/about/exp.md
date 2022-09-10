@@ -12,7 +12,7 @@ permalink: /experience/
 
 **University of Miami**
 
-*PhD candidate																			2019-current*
+*PhD candidate*	<style> 2019-current {text-align: right}</style>																		
 
 Biostatistics
 
@@ -20,7 +20,7 @@ Biostatistics
 
 **The George Wasingtom University**
 
-*Master of Science																			2017-2019*
+*Master of Science*	<style> 2017-2019 {text-align: right}</style>																			
 
 Statistics
 
@@ -28,9 +28,8 @@ Statistics
 
 **State University of New York at Binghamton**		
 
-*Bachelor of Science   																		2014-2017*
+*Bachelor of Science* <style> *2014-2017* {text-align: right}</style>
 
 Double majored in Actuarial math & Economics  
 
 --------------------------------------------------------------
-
