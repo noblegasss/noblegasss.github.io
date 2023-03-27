@@ -37,13 +37,22 @@ permalink: /experience/
     </span>
 </p>
 
---------------------------------------------------------------
-## Working Papers
-
-- DNA methylation associated with CSF biomarkers in Alzheimer’s disease
-- Biomarkers detection of neoadjuvant chemotherapy response in Triple Negative Breast Cancer
 
 --------------------------------------------------------------
 ## Publications
 
+### Publised in peer-reviewed jounals
+
 Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin ER, Wang L (2022) [Distinct sex-specific DNA methylation differences in Alzheimer's disease](https://alzres.biomedcentral.com/articles/10.1186/s13195-022-01070-z). *Alzheimer's Research & Therapy* 14: 133 ([code](https://github.com/TransBioInfoLab/AD-meta-analysis-blood-by-sex))
+
+### Submitted manuscripts
+
+**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](10.21203/rs.3.rs-2391364/v1) (accepted for publication by Alzheimer's Research & Therapy)
+
+**Zhang W**, Li E, Wang L, Lehmann BD, Chen XS (2023) Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy (under revision)
+
+### Working Papers
+
+Iterative Multivariate Random Forest for Feature Selection in Integrating Multi-Omics Datasets
+
+
