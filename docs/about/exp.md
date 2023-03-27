@@ -47,7 +47,7 @@ Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin E
 
 ### Submitted manuscripts
 
-**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](10.21203/rs.3.rs-2391364/v1) (accepted for publication by Alzheimer's Research & Therapy)
+**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](10.21203/rs.3.rs-2391364/v1). *Alzheimer's Research & Therapy* In press ([code](https://github.com/TransBioInfoLab/AD-ATN-biomarkers-and-DNAm))
 
 **Zhang W**, Li E, Wang L, Lehmann BD, Chen XS (2023) Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy (under revision)
 
