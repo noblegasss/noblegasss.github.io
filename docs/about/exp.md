@@ -41,7 +41,7 @@ permalink: /experience/
 --------------------------------------------------------------
 ## Publications
 
-### Publised in peer-reviewed jounals
+### Published in peer-reviewed jounals
 
 Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin ER, Wang L (2022) [Distinct sex-specific DNA methylation differences in Alzheimer's disease](https://alzres.biomedcentral.com/articles/10.1186/s13195-022-01070-z). *Alzheimer's Research & Therapy* 14: 133 ([code](https://github.com/TransBioInfoLab/AD-meta-analysis-blood-by-sex))
 
