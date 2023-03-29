@@ -4,8 +4,6 @@ title: Experience
 permalink: /experience/
 ---
 
-# My Experience
----------------------------------------------------------------
 ## Education
 
 **University of Miami**
@@ -59,9 +57,16 @@ Iterative Multivariate Random Forest for Feature Selection in Integrating Multi-
 ## Awards
 
 <p style="text-align:left;">
+    **Student competition award**, ASA Florida Chapter, $200
+    <span style="float:right;">
+        2023
+    </span>
+</p>
+
+<p style="text-align:left;">
     **Travel Award**, University of Miami, $1000
     <span style="float:right;">
-        *2023*
+        2023
     </span>
 </p>
 
