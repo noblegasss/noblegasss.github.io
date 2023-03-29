@@ -57,7 +57,7 @@ Iterative Multivariate Random Forest for Feature Selection in Integrating Multi-
 ## Awards
 
 <p style="text-align:left;">
-    **Student competition award**, ASA Florida Chapter, $200
+    **Student competition award**, ASA Florida Chapter Meeting, $200
     <span style="float:right;">
         2023
     </span>
