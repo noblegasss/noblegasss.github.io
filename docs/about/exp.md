@@ -49,7 +49,7 @@ Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin E
 
 **Zhang W**, Li E, Wang L, Lehmann BD, Chen XS (2023) Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy (under revision)
 
-### Working Papers
+### Working papers
 
 Iterative Multivariate Random Forest for Feature Selection in Integrating Multi-Omics Datasets
 
