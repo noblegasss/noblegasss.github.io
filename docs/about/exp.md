@@ -55,4 +55,14 @@ Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin E
 
 Iterative Multivariate Random Forest for Feature Selection in Integrating Multi-Omics Datasets
 
+--------------------------------------------------------------
+## Awards
+
+<p style="text-align:left;">
+    **Travel Award**, University of Miami, $1000
+    <span style="float:right;">
+        *2023*
+    </span>
+</p>
+
 
