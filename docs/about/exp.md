@@ -41,13 +41,13 @@ permalink: /experience/
 
 ### Published in peer-reviewed jounals
 
-Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin ER, Wang L$^*$ (2022) [Distinct sex-specific DNA methylation differences in Alzheimer's disease](https://alzres.biomedcentral.com/articles/10.1186/s13195-022-01070-z). *Alzheimer's Research & Therapy* 14: 133 ([code](https://github.com/TransBioInfoLab/AD-meta-analysis-blood-by-sex))
+Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin ER, Wang L\^*\ (2022) [Distinct sex-specific DNA methylation differences in Alzheimer's disease](https://alzres.biomedcentral.com/articles/10.1186/s13195-022-01070-z). *Alzheimer's Research & Therapy* 14: 133 ([code](https://github.com/TransBioInfoLab/AD-meta-analysis-blood-by-sex))
 
 ### Submitted manuscripts
 
-**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L$^*$ (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](https://www.researchsquare.com/article/rs-2391364/v1). *Alzheimer's Research & Therapy* In press ([code](https://github.com/TransBioInfoLab/AD-ATN-biomarkers-and-DNAm))
+**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L\^*\ (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](https://www.researchsquare.com/article/rs-2391364/v1). *Alzheimer's Research & Therapy* In press ([code](https://github.com/TransBioInfoLab/AD-ATN-biomarkers-and-DNAm))
 
-**Zhang W**, Li E, Wang L, Lehmann BD$^*$, Chen XS$^*$ (2023) Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy. *Cancers* In press
+**Zhang W**, Li E, Wang L, Lehmann BD\^*\, Chen XS\^*\ (2023) Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy. *Cancers* In press
 
 ### Working papers
 
