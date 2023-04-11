@@ -1,6 +1,6 @@
 ---
 layout: redirect
-title:  "Tuning function for parameter c1 in sgcca"
+title:  "Tuning Function for Parameter c1 in SGCCA"
 sitemap: false
 permalink: /TITLE/
 categories: R
