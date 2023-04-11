@@ -1,5 +1,5 @@
 
-
+---
 layout: post
 
 title:  "Tuning function for parameter c1 in sgcca"
@@ -14,8 +14,3 @@ categories: R
 
 
 
-
-
-```makefile
-{% include https://noblegasss.github.io/Tuning-c1-for-sgcca/ %}
-```
