@@ -41,17 +41,17 @@ permalink: /experience/
 
 ### Published in peer-reviewed jounals
 
+**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L\* (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](https://alzres.biomedcentral.com/articles/10.1186/s13195-023-01216-7). *Alzheimer's Research & Therapy* 15: 78 ([code](https://github.com/TransBioInfoLab/AD-ATN-biomarkers-and-DNAm))
+
 **Zhang W**, Li E, Wang L, Lehmann BD\*, Chen XS\* (2023) Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy. *Cancers* 2023; 15(8):2194. [https://doi.org/10.3390/cancers15082194](https://www.mdpi.com/2072-6694/15/8/2194)
 
 Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin ER, Wang L\* (2022) [Distinct sex-specific DNA methylation differences in Alzheimer's disease](https://alzres.biomedcentral.com/articles/10.1186/s13195-022-01070-z). *Alzheimer's Research & Therapy* 14: 133 ([code](https://github.com/TransBioInfoLab/AD-meta-analysis-blood-by-sex))
 
-### Submitted manuscripts
-
-**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L\* (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](https://www.researchsquare.com/article/rs-2391364/v1). *Alzheimer's Research & Therapy* In press ([code](https://github.com/TransBioInfoLab/AD-ATN-biomarkers-and-DNAm))
-
 ### Working papers
 
 Iterative Multivariate Random Forest for Feature Selection in Integrating Multi-Omics Datasets
+
+Estimating reliability of DNA methylation levels measured by EPIC arrays for dementia research
 
 --------------------------------------------------------------
 ## Awards
