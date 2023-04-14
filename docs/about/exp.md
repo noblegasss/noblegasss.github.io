@@ -64,7 +64,7 @@ Estimating reliability of DNA methylation levels measured by EPIC arrays for dem
 </p>
 
 <p style="text-align:left;">
-    **Travel Award**, University of Miami, $1000
+    **Travel Award**, University of Miami
     <span style="float:right;">
         2023
     </span>
