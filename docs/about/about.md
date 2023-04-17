@@ -20,6 +20,10 @@ I am a fourth-year PhD student in Biostatistics @ University of Miami. My resear
 
 **My Email** You can reach me @ [wxz337@miami.edu](mailto:wxz337@miami.edu)
 
+[**Google Scholar**](https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en)
+
+[**Research Gate**](https://www.researchgate.net/profile/Wei-Zhang-980)
+
 --------------------------------------------------
 
 ### Some fun facts about me
