@@ -49,9 +49,7 @@ Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin E
 
 ### Working papers
 
-Iterative Multivariate Random Forest for Feature Selection in Integrating Multi-Omics Datasets
-
-Estimating reliability of DNA methylation levels measured by EPIC arrays for dementia research
+Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC BeadChip microarrays for dementia research
 
 --------------------------------------------------------------
 ## Awards
