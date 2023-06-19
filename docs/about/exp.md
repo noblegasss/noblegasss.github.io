@@ -49,7 +49,7 @@ Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin E
 
 ### Working papers
 
-**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Kunkle B, Martin ER, Wang L* (2023) Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC BeadChip microarrays for dementia research. Manuscript in review ([code](https://github.com/TransBioInfoLab/DNAm-reliability))
+**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Kunkle B, Martin ER, Wang L* (2023) Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC BeadChip microarrays for dementia research. *Manuscript in review* ([code](https://github.com/TransBioInfoLab/DNAm-reliability))
 
 --------------------------------------------------------------
 ## Awards
