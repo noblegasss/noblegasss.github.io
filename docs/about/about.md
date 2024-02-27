@@ -20,7 +20,7 @@ I am a PhD candidate in Biostatistics @ University of Miami. My primary research
 
 **My Email** You can reach me: wxz337 at miami.edu
 
-**My Resume** Please download my <a href="username.github.io/assests/WZ_resume2024022.pdf" target="_blank">resume</a>
+**My Resume** Please download my <a href="noblegasss.github.io/assests/WZ_resume2024022.pdf" target="_blank">resume</a>
  if you are interested in my research experiences
 
 **Some fun facts about me** 🐱🐶 I have two lovely furry kids: a Shiba Inu puppy and a kitten.
