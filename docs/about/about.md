@@ -18,7 +18,7 @@ I am a PhD candidate in Biostatistics @ University of Miami. My primary research
 
 **My Linkedin** [nova-weizhang](http://linkedin.com/in/nova-weizhang)
 
-**My Email** You can reach me: wei.zhang60 at miami.edu
+**My Email** You can reach me: wei.zhang60 at med.miami.edu
 
 **My Resume** Please download my latest [resume](http://noblegasss.github.io/assets/WZ_resume2024022.pdf)
  if you are interested in my academic and research experiences.
