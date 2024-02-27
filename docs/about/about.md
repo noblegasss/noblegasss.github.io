@@ -14,9 +14,9 @@ I am a PhD candidate in Biostatistics @ University of Miami. My primary research
 
 **My Lab** I'm currently working at [Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/)
 
-**My Github** [ ☞ 👩🏻‍💻 ](https://github.com/noblegasss)
+**My Github** [noblegasss](https://github.com/noblegasss)
 
-**My Linkedin** [ ☞ 🤝 ](http://linkedin.com/in/nova-weizhang)
+**My Linkedin** [nova-weizhang](http://linkedin.com/in/nova-weizhang)
 
 **My Email** You can reach me: wxz337 at miami.edu
 
