@@ -47,9 +47,13 @@ permalink: /experience/
 
 Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin ER, Wang L\* (2022) [Distinct sex-specific DNA methylation differences in Alzheimer's disease](https://alzres.biomedcentral.com/articles/10.1186/s13195-022-01070-z). *Alzheimer's Research & Therapy* 14: 133 ([code](https://github.com/TransBioInfoLab/AD-meta-analysis-blood-by-sex))
 
-### Working papers
+### Preprints
 
-**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Kunkle B, Martin ER, Wang L* (2023) Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC BeadChip microarrays for dementia research. *Manuscript in review* ([code](https://github.com/TransBioInfoLab/DNAm-reliability))
+**Zhang W**, Wu, C, Huang H, Bleu P, Zambare W, Alvarez J, Wang L, Paty, PB, Romesser PB, Smith JJ, Chen XS (2024) [Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis and network-Based biomarker selection](https://www.medrxiv.org/content/10.1101/2024.01.24.24301749v1.article-info) *Preprint*
+
+
+
+**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Kunkle B, Martin ER, Wang L* (2023) [Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC BeadChip microarrays for dementia research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10350239/). *Manuscript in review* ([code](https://github.com/TransBioInfoLab/DNAm-reliability))
 
 --------------------------------------------------------------
 ## Awards
