@@ -49,7 +49,7 @@ Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin E
 
 ### Preprints
 
-**Zhang W**, Wu, C, Huang H, Bleu P, Zambare W, Alvarez J, Wang L, Paty, PB, Romesser PB, Smith JJ, Chen XS (2024) [Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis and network-Based biomarker selection](https://www.medrxiv.org/content/10.1101/2024.01.24.24301749v1.article-info) *Preprint*
+**Zhang W**, Wu, C, Huang H, Bleu P, Zambare W, Alvarez J, Wang L, Paty, PB, Romesser PB, Smith JJ, Chen XS (2024) [Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis and network-Based biomarker selection](https://www.medrxiv.org/content/10.1101/2024.01.24.24301749v1.article-info). *Preprint*
 
 
 
