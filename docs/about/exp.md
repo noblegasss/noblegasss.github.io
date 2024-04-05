@@ -42,7 +42,7 @@ permalink: /experience/
 ### Published in peer-reviewed journals
 
 
-**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Kunkle B, Martin ER, Wang L\* (2024) [Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC v1.0 BeadChip microarrays](https://www.tandfonline.com/doi/full/10.1080/15592294.2024.2333660). *Epigenetics* ([code](https://github.com/TransBioInfoLab/DNAm-reliability))
+**Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Kunkle B, Martin ER, Wang L\* (2024) [Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC v1.0 BeadChip microarrays](https://www.tandfonline.com/doi/full/10.1080/15592294.2024.2333660). *Epigenetics* 19(1) ([code](https://github.com/TransBioInfoLab/DNAm-reliability))
 
 **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L\* (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](https://alzres.biomedcentral.com/articles/10.1186/s13195-023-01216-7). *Alzheimer's Research & Therapy* 15: 78 ([code](https://github.com/TransBioInfoLab/AD-ATN-biomarkers-and-DNAm))
 
