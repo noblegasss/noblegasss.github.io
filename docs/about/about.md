@@ -20,7 +20,7 @@ I am a PhD candidate in Biostatistics @ University of Miami, under the guidance 
 
 **My Email** You can reach me: wei.zhang60 at med.miami.edu
 
-**My Resume** Please download my latest [resume](http://noblegasss.github.io/assets/WZ_CV240408.pdf)
+**My Resume** Please download my latest [resume](http://noblegasss.github.io/assets/WeiZhang_CV240408.pdf)
  if you are interested in my academic and research experiences.
 
 **Some fun facts about me** 🐱🐶 I have two lovely furry kids: a Shiba Inu puppy and a kitten.
