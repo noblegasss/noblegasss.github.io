@@ -19,7 +19,7 @@ permalink: /experience/
 **The George Washington University**
 
 <p style="text-align:left;">
-    *Master of Science in Statistics*
+    *MS in Statistics*
     <span style="float:right;">
         *2017-2019*
     </span>
@@ -29,7 +29,7 @@ permalink: /experience/
 **State University of New York at Binghamton**		
 
 <p style="text-align:left;">
-    *Bachelor of Science; Double majored in Actuarial math & Economics*
+    *BS; Double majored in Actuarial math & Economics*
     <span style="float:right;">
         *2014-2017*
     </span>
