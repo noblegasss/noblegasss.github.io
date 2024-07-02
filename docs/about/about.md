@@ -5,7 +5,6 @@ permalink: /about/
 ---
 
 
-
 ## Hello 👋🏻 Welcome!
 
 Hi, I'm Wei. You can call me Wei or Nova, whatever you like! Nice to meet you!  
