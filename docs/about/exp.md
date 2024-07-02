@@ -11,7 +11,7 @@ permalink: /experience/
 <p style="text-align:left;">
     *PhD candidate in Biostatistics*
     <span style="float:right;">
-        *2019-current*
+        *2019-2024*
     </span>
 </p>
 
