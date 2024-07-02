@@ -24,7 +24,7 @@ minima:
 
 
 # Build settings
-theme: minima
+remote_theme: Jekyll/minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
