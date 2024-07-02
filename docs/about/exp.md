@@ -9,9 +9,9 @@ permalink: /experience/
 **University of Miami**
 
 <p style="text-align:left;">
-    *PhD candidate in Biostatistics*
+    *PhD in Biostatistics*
     <span style="float:right;">
-        *2019-current*
+        *2019-2024*
     </span>
 </p>
 

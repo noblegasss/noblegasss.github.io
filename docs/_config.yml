@@ -20,11 +20,11 @@ minima:
   social_links:
     - { platform: github, user_url: "https://github.com/noblegasss/" }
     - { platform: linkedin, user_url: "http://linkedin.com/in/nova-weizhang" }
-    - { platform: Google_Scholar, user_url: "https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en" }
+    - { platform: google_scholar, user_url: "https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en" }
 
 
 # Build settings
-remote_theme: jekyll/minima
+theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
