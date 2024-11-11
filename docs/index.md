@@ -5,14 +5,16 @@
 layout: home
 ---
 
-**Wei (Nova) Zhang**
+## Wei (Nova) Zhang
 
-**Current Position** Postdoctoral Associate, Division of Biostatistics, Department of Public Health Sciences, University of Miami 
+**Current Position** 
+
+Postdoctoral Associate \\ [Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/) \\ Division of Biostatistics \\ Department of Public Health Sciences \\ University of Miami 
 
 **Research Interests** Multi-omics Integration, Random Forests, Variable Selection, Meta-analysis, Biomarker Detection, Subtype Clustering,
 Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
 
-**Lab** [Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/)
+**Lab** 
 
 **Github** [noblegasss](https://github.com/noblegasss)
 
