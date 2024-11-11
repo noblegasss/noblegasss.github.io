@@ -7,11 +7,14 @@ layout: home
 
 <h1>Wei (Nova) Zhang</h1>
 
-**Current Position** 
+<h2>Current Position</h2>
 
-Postdoctoral Associate \\ [Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/) \\ Division of Biostatistics \\ Department of Public Health Sciences \\ University of Miami 
+Postdoctoral Associate 
+[Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/) \ Division of Biostatistics \ Department of Public Health Sciences \ University of Miami 
 
-**Research Interests** Multi-omics Integration, Random Forests, Variable Selection, Meta-analysis, Biomarker Detection, Subtype Clustering,
+**Research Interests** 
+
+Multi-omics Integration, Random Forests, Variable Selection, Meta-analysis, Biomarker Detection, Subtype Clustering,
 Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
 
 
