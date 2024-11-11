@@ -5,7 +5,9 @@
 layout: home
 ---
 
-### Wei (Nova) Zhang, Ph.D.
+**Wei (Nova) Zhang**
+
+**Current Position** Postdoctoral Associate, Division of Biostatistics, Department of Public Health Sciences, University of Miami 
 
 **Research Interests** Multi-omics Integration, Random Forests, Variable Selection, Meta-analysis, Biomarker Detection, Subtype Clustering,
 Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
