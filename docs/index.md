@@ -5,7 +5,7 @@
 layout: home
 ---
 
-## Wei (Nova) Zhang**, Ph.D.
+### Wei (Nova) Zhang, Ph.D.
 
 **Research Interests** Multi-omics Integration, Random Forests, Variable Selection, Meta-analysis, Biomarker Detection, Subtype Clustering,
 Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
