@@ -11,30 +11,36 @@ layout: home
 
 <h2>Current Position</h2>
 
-Postdoctoral Associate <br />
+**Postdoctoral Associate** <br />
 [Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/) <br />
 Division of Biostatistics <br />
 Department of Public Health Sciences <br />
 University of Miami 
 
-**Research Interests** 
+<h2>Research Interests</h2>
 
 Multi-omics Integration, Random Forests, Variable Selection, Meta-analysis, Biomarker Detection, Subtype Clustering,
 Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
 
 
-**Online Profiles**
+<h2>Online Profiles</h2>
 
-**Github** [noblegasss](https://github.com/noblegasss)
+- Github: [noblegasss](https://github.com/noblegasss)
 
-**Google Scholar** [Link]([http://linkedin.com/in/nova-weizhang](https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en))
+- [Google Scholar]([http://linkedin.com/in/nova-weizhang](https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en))
 
-**Linkedin** [nova-weizhang](http://linkedin.com/in/nova-weizhang)
+- Linkedin: [nova-weizhang](http://linkedin.com/in/nova-weizhang)
 
-**Email** wei.zhang60 at med.miami.edu
+<h2>Contact Information</h2>
 
-**CV** Please download my latest [CV](http://noblegasss.github.io/assets/WZ_CV241111.pdf)
- if you are interested in my academic and research experiences.
+wei.zhang60 at med.miami.edu
 
-**Some fun facts about me** 🐱🐶 I have two lovely furry kids: a Shiba Inu puppy and a kitten.
+<h2>Curriculum Vitae</h2>
+
+Please download my latest [CV](http://noblegasss.github.io/assets/WZ_CV241111.pdf)
+if you are interested in my academic and research experiences.
+
+<h2>Some fun facts about me</h2> 
+
+🐱🐶 I have two lovely furry kids: a Shiba Inu puppy and a kitten.
 
