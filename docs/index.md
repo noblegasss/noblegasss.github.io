@@ -5,7 +5,7 @@
 layout: home
 ---
 
-## Wei (Nova) Zhang
+<h1>Wei (Nova) Zhang</h1>
 
 **Current Position** 
 
@@ -14,7 +14,8 @@ Postdoctoral Associate \\ [Translational Statistical Bioinformatics Lab](https:/
 **Research Interests** Multi-omics Integration, Random Forests, Variable Selection, Meta-analysis, Biomarker Detection, Subtype Clustering,
 Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
 
-**Lab** 
+
+**Online Profiles**
 
 **Github** [noblegasss](https://github.com/noblegasss)
 
