@@ -7,10 +7,15 @@ layout: home
 
 <h1>Wei (Nova) Zhang</h1>
 
+-----------------------
+
 <h2>Current Position</h2>
 
-Postdoctoral Associate 
-[Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/) \ Division of Biostatistics \ Department of Public Health Sciences \ University of Miami 
+Postdoctoral Associate <br />
+[Translational Statistical Bioinformatics Lab](https://transbioinfolab.org/) <br />
+Division of Biostatistics <br />
+Department of Public Health Sciences <br />
+University of Miami 
 
 **Research Interests** 
 
