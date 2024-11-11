@@ -27,7 +27,7 @@ Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
 
 Github: [noblegasss](https://github.com/noblegasss)
 
-[Google Scholar]([http://linkedin.com/in/nova-weizhang](https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en))
+[Google Scholar](https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en)
 
 Linkedin: [nova-weizhang](http://linkedin.com/in/nova-weizhang)
 
