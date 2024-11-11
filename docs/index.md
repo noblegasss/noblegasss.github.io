@@ -27,4 +27,3 @@ Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
 
 **Some fun facts about me** 🐱🐶 I have two lovely furry kids: a Shiba Inu puppy and a kitten.
 
---------------
