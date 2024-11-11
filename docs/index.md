@@ -4,14 +4,3 @@
 
 layout: home
 ---
-
-**Hello 👋🏻 Welcome!**
-
-Hi, I’m Wei. You can call me Wei or Nova, whatever you like! Nice to meet you!
-
-**About me**  [→→ 👩🏻](https://noblegasss.github.io/about/)
-
-**Some random writing posts** [→→ 📝](https://noblegasss.github.io/categories/)
-
-
---------------
