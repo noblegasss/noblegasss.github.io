@@ -25,20 +25,21 @@ Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
 
 <h2>Online Profiles</h2>
 
-- Github: [noblegasss](https://github.com/noblegasss)
+Github: [noblegasss](https://github.com/noblegasss)
 
-- [Google Scholar]([http://linkedin.com/in/nova-weizhang](https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en))
+[Google Scholar]([http://linkedin.com/in/nova-weizhang](https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en))
 
-- Linkedin: [nova-weizhang](http://linkedin.com/in/nova-weizhang)
+Linkedin: [nova-weizhang](http://linkedin.com/in/nova-weizhang)
 
-<h2>Contact Information</h2>
-
-wei.zhang60 at med.miami.edu
 
 <h2>Curriculum Vitae</h2>
 
 Please download my latest [CV](http://noblegasss.github.io/assets/WZ_CV241111.pdf)
 if you are interested in my academic and research experiences.
+
+<h2>Contact Information</h2>
+
+wei.zhang60 at med.miami.edu
 
 <h2>Some fun facts about me</h2> 
 
