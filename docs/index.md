@@ -21,7 +21,7 @@ My research focuses on developing and refining statistical methods for the integ
 
 Throughout my doctoral studies and continuing to the present, I have conducted comprehensive research to identify genetic and epigenetic signatures associated with breast cancer, colorectal cancer, dementia, and Alzheimer's disease. These efforts benefit the discovery of key molecular patterns that can predict disease outcomes and responses to treatment. I hope to continue my research and make a meaningful contribution. 
 
-Please feel free to contact me at the links provided on this website.
+Please feel free to contact me at the links or email provided on this website.
 
 <h2>Current Position</h2>
 
