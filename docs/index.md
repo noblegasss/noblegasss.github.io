@@ -11,10 +11,6 @@ Ph.D. in Biostatistics <br />
 University of Miami <br />
 wei.zhang60 at med.miami.edu
 
-Github: [noblegasss](https://github.com/noblegasss) | 
-[Google Scholar](https://scholar.google.com/citations?user=BRtsZUAAAAAJ&hl=en) | 
-Linkedin: [nova-weizhang](http://linkedin.com/in/nova-weizhang)
-
 -----------------------
 
 <h2>Current Position</h2>
