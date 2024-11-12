@@ -16,7 +16,9 @@
 
 <symbol id="rss" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194 11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"/></symbol>
 
-<symbol id="google" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.415,6.509l-7.42-5.886L7.97,6.585c2.725,0.05,3.891,2.147,4.117,2.548L15.415,6.509z"/></symbol>
+<symbol id="google_scholar" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414">
+<path d="M0.585,6.505l7.42-5.885L8.03,6.582 C5.305,6.632,4.139,8.729,3.913,9.13L0.585,6.505z"/><path d="M15.415,6.509l-7.42-5.886L7.97,6.585c2.725,0.05,3.891,2.147,4.117,2.548L15.415,6.509z"/>
+</symbol>
 
 <symbol id="stackoverflow" class="svg-icon" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.658 14.577v-4.27h1.423V16H1.23v-5.693h1.42v4.27h10.006zm-8.583-1.423h7.16V11.73h-7.16v1.424zm.173-3.235l6.987 1.46.3-1.38L4.55 8.54l-.302 1.38zm.906-3.37l6.47 3.02.602-1.3-6.47-3.02-.602 1.29zm1.81-3.19l5.478 4.57.906-1.08L7.87 2.28l-.9 1.078zM10.502 0L9.338.863l4.27 5.735 1.164-.862L10.5 0z"/></symbol>
 
