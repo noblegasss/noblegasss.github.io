@@ -4,9 +4,9 @@ layout: base
 
 <div class="home">
 
-  <header class="sidebar">
-    {{ page.title }}
-  </header>
+  {%- if page.title -%}
+  <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
 
   <div class="home-content">
     {{ content }}
