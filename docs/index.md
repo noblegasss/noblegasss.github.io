@@ -13,6 +13,16 @@ wei.zhang60 at med.miami.edu
 
 -----------------------
 
+<h2>Welcome</h2>
+
+I'm a researcher at the University of Miami, where I recently earned my Ph.D. in Biostatistics. 
+
+My research focuses on developing and refining statistical methods for the integration of multi-omics data to uncover novel biomarkers and improve prognostic models in cancer and neurodegenerative diseases.
+
+Throughout my doctoral studies and continuing to the present, I have conducted comprehensive research to identify genetic and epigenetic signatures associated with breast cancer, colorectal cancer, dementia, and Alzheimer's disease. These efforts benefit the discovery of key molecular patterns that can predict disease outcomes and responses to treatment. I hope to continue my research and make a meaningful contribution. 
+
+Please feel free to contact me at the links provided on this website.
+
 <h2>Current Position</h2>
 
 **Postdoctoral Associate** <br />
