@@ -29,6 +29,9 @@ Key: * Indicates corresponding authors.
 
 
 
+## Working Papers
 
+1. DNA Methylation Signature of a Lifestyle-based Resilience Index for Cognitive Health
 
+1. Enhanced Multi-omics Integration via Multivariate Random Forests for Robust Biomarker Discovery
 
