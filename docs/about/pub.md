@@ -18,11 +18,11 @@ Key: * Indicates corresponding authors.
 
 ### Epigenetic Research in Dementia and Alzheimer's Disease
 
-1. **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Kunkle B, Chen XS, Martin ER, Wang L* (2024) [Blood DNA Methylation Signature for Incident Dementia: Evidence from Longitudinal Cohorts](https://doi.org/10.1101/2024.11.03.24316667). *Alzheimer's & Dementia*, In Review
+1. **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Kunkle B, Chen XS, Martin ER, Wang L* (2024) [Blood DNA methylation signature for incident dementia: evidence from longitudinal cohorts](https://doi.org/10.1101/2024.11.03.24316667). *Alzheimer's & Dementia*, In Review
 
 1. **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Kunkle B, Martin ER, Wang L\* (2024) [Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC v1.0 BeadChip microarrays](https://www.tandfonline.com/doi/full/10.1080/15592294.2024.2333660). *Epigenetics* 19(1) ([code](https://github.com/TransBioInfoLab/DNAm-reliability))
 
-1. **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L\* (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](https://alzres.biomedcentral.com/articles/10.1186/s13195-023-01216-7). *Alzheimer's Research & Therapy* 15: 78 ([code](https://github.com/TransBioInfoLab/AD-ATN-biomarkers-and-DNAm)
+1. **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Martin ER, Wang L\* (2023) [Distinct CSF biomarker-associated DNA methylation in Alzheimer's disease and cognitively normal subjects](https://alzres.biomedcentral.com/articles/10.1186/s13195-023-01216-7). *Alzheimer's Research & Therapy* 15: 78 ([code](https://github.com/TransBioInfoLab/AD-ATN-biomarkers-and-DNAm))
 
 1. Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin ER, Wang L\* (2022) [Distinct sex-specific DNA methylation differences in Alzheimer's disease](https://alzres.biomedcentral.com/articles/10.1186/s13195-022-01070-z). *Alzheimer's Research & Therapy* 14: 133 ([code](https://github.com/TransBioInfoLab/AD-meta-analysis-blood-by-sex))
 
