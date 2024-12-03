@@ -12,7 +12,7 @@ Key: * Indicates corresponding authors.
 
 ### Epigenetic Research in Dementia and Alzheimer's Disease
 
-1. **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Kunkle B, Chen XS, Martin ER, Wang L* (2024) [Blood DNA methylation signature for incident dementia: evidence from longitudinal cohorts](https://doi.org/10.1101/2024.11.03.24316667). *Alzheimer's & Dementia*, Accepted
+1. **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Kunkle B, Chen XS, Martin ER, Wang L* (2024) [Blood DNA methylation signature for incident dementia: evidence from longitudinal cohorts](https://doi.org/10.1101/2024.11.03.24316667). *Alzheimer's & Dementia*, In press ([code](https://github.com/TransBioInfoLab/blood-dnam-and-incident-dementia))
 
 1. **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Varma A, Chen XS, Kunkle B, Martin ER, Wang L\* (2024) [Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC v1.0 BeadChip microarrays](https://www.tandfonline.com/doi/full/10.1080/15592294.2024.2333660). *Epigenetics* 19(1) ([code](https://github.com/TransBioInfoLab/DNAm-reliability))
 
