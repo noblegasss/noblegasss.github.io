@@ -22,7 +22,7 @@ Key: * Indicates corresponding authors.
 
 ### Transcriptomic Biomarker Discovery for Cancer Chemotherapy Response
 
-1. **Zhang W**, Wu, C, Huang H, Bleu P, Zambare W, Alvarez J, Wang L, Paty, PB, Romesser PB, Smith JJ\*, Chen XS\* (2024) [Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis and network-Based biomarker selection](https://www.medrxiv.org/content/10.1101/2024.01.24.24301749v1.article-info). *Translational Oncology*, In Review
+1. **Zhang W**, Wu, C, Huang H, Bleu P, Zambare W, Alvarez J, Wang L, Paty, PB, Romesser PB, Smith JJ\*, Chen XS\* (2024) [Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis and network-Based biomarker selection](https://doi.org/10.1016/j.tranon.2024.102238). *Translational Oncology*, 52, 102238. ISSN: 1936-5233 ([code](https://github.com/noblegasss/Organoid-Prediction))
 
 1. **Zhang W**, Li E, Wang L, Lehmann BD\*, Chen XS\* (2023) [Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy](https://www.mdpi.com/2072-6694/15/8/2194). *Cancers* 2023; 15(8):2194 ([code](https://github.com/TransBioInfoLab/TNBC-meta-analysis))
 
