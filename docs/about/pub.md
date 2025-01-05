@@ -20,6 +20,10 @@ Key: * Indicates corresponding authors.
 
 1. Silva TC, **Zhang W**, Young JI, Gomez L, Schmidt MA, Varma A, Chen XS, Martin ER, Wang L\* (2022) [Distinct sex-specific DNA methylation differences in Alzheimer's disease](https://alzres.biomedcentral.com/articles/10.1186/s13195-022-01070-z). *Alzheimer's Research & Therapy* 14: 133 ([code](https://github.com/TransBioInfoLab/AD-meta-analysis-blood-by-sex))
 
+### DNA Methylation and Lifestyle Factors in Cognitive Health
+
+1. **Zhang, W.**, Lukacsovich, D., Young, J. I., Gomez, L., Schmidt, M. A., Martin, E. R., Kunkle, B. W., Chen, X., O'Shea, D. M., Galvin, J. E., & Wang, L. (2024). [DNA Methylation Signature of a Lifestyle-based Resilience Index for Cognitive Health](https://doi.org/10.21203/rs.3.rs-5423573/v1). *Preprint*, rs.3.rs-5423573. 
+
 ### Transcriptomic Biomarker Discovery for Cancer Chemotherapy Response
 
 1. **Zhang W**, Wu, C, Huang H, Bleu P, Zambare W, Alvarez J, Wang L, Paty, PB, Romesser PB, Smith JJ\*, Chen XS\* (2024) [Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis and network-Based biomarker selection](https://doi.org/10.1016/j.tranon.2024.102238). *Translational Oncology*, 52, 102238. ISSN: 1936-5233 ([code](https://github.com/noblegasss/Organoid-Prediction))
@@ -27,8 +31,6 @@ Key: * Indicates corresponding authors.
 1. **Zhang W**, Li E, Wang L, Lehmann BD\*, Chen XS\* (2023) [Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy](https://www.mdpi.com/2072-6694/15/8/2194). *Cancers* 2023; 15(8):2194 ([code](https://github.com/TransBioInfoLab/TNBC-meta-analysis))
 
 ### Working Papers
-
-1. DNA Methylation Signature of a Lifestyle-based Resilience Index for Cognitive Health
 
 1. Enhanced Multi-omics Integration via Multivariate Random Forests for Robust Biomarker Discovery
 
