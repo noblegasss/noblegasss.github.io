@@ -22,7 +22,7 @@ Key: * Indicates corresponding authors.
 
 ### DNA Methylation and Lifestyle Factors in Cognitive Health
 
-1. **Zhang, W.**, Lukacsovich, D., Young, J. I., Gomez, L., Schmidt, M. A., Martin, E. R., Kunkle, B. W., Chen, X., O'Shea, D. M.*, Galvin, J. E.*, & Wang, L.* (2024). [DNA Methylation Signature of a Lifestyle-based Resilience Index for Cognitive Health](https://doi.org/10.21203/rs.3.rs-5423573/v1). *Preprint*, rs.3.rs-5423573. 
+1. **Zhang, W.**, Lukacsovich, D., Young, J. I., Gomez, L., Schmidt, M. A., Martin, E. R., Kunkle, B. W., Chen, X., O'Shea, D. M.\*, Galvin, J. E.\*, & Wang, L.\* (2024). [DNA Methylation Signature of a Lifestyle-based Resilience Index for Cognitive Health](https://doi.org/10.21203/rs.3.rs-5423573/v1). *Preprint*, rs.3.rs-5423573. 
 
 ### Transcriptomic Biomarker Discovery for Cancer Chemotherapy Response
 
