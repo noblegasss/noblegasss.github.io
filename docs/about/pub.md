@@ -26,11 +26,12 @@ Key: * Indicates corresponding authors.
 
 ### Transcriptomic Biomarker Discovery for Cancer Chemotherapy Response
 
-1. **Zhang W**, Wu, C, Huang H, Bleu P, Zambare W, Alvarez J, Wang L, Paty, PB, Romesser PB, Smith JJ\*, Chen XS\* (2024) [Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis and network-Based biomarker selection](https://doi.org/10.1016/j.tranon.2024.102238). *Translational Oncology*, 52, 102238. ISSN: 1936-5233 ([code](https://github.com/noblegasss/Organoid-Prediction))
+1. **Zhang W**, Wu, C, Huang H, Bleu P, Zambare W, Alvarez J, Wang L, Paty, PB, Romesser PB, Smith JJ\*, Chen XS\* (2025) [Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis and network-Based biomarker selection](https://doi.org/10.1016/j.tranon.2024.102238). *Translational Oncology*, 52, 102238. ISSN: 1936-5233 ([code](https://github.com/noblegasss/Organoid-Prediction))
 
 1. **Zhang W**, Li E, Wang L, Lehmann BD\*, Chen XS\* (2023) [Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy](https://www.mdpi.com/2072-6694/15/8/2194). *Cancers* 2023; 15(8):2194 ([code](https://github.com/TransBioInfoLab/TNBC-meta-analysis))
 
 ### Working Papers
 
-1. Enhanced Multi-omics Integration via Multivariate Random Forests for Robust Biomarker Discovery
+1. An Integrative Multi-Omics Random Forest Framework for Robust Biomarker Discovery
+
 
