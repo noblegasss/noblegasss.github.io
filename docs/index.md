@@ -39,7 +39,7 @@ Statistical Genomics, Epigenetics, Neurodegenerative Disease and Cancers
 
 <h2>Curriculum Vitae</h2>
 
-Please download my latest [CV](http://noblegasss.github.io/assets/WZ_CV241111.pdf)
+Please download my latest [CV](http://noblegasss.github.io/assets/WZ_CV20250310.pdf)
 if you are interested in my academic and research experiences.
 
 
