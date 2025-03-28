@@ -24,6 +24,7 @@ gem "minimal-mistakes-jekyll"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.6"
   gem "jekyll-seo-tag"
+  gem 'faraday'
   gem 'faraday-retry'
 end
 
