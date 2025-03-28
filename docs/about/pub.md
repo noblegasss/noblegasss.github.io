@@ -16,7 +16,7 @@ Key: * Indicates corresponding authors.
 
 ### Epigenetic Biomarkers in ADRD
 
-1. **Zhang W**, Young JI, Gomez L, Schmidt MA, Lukacsovich D, Kunkle B, Chen XS, Martin ER, Wang L\* (2025) Blood DNA methylation signature for incident dementia: Evidence from longitudinal cohorts. *Alzheimer's \& Dementia* 21:e14496. [https://doi.org/10.1002/alz.14496](https://doi.org/10.1002/alz.14496) ([code](https://github.com/TransBioInfoLab/blood-dnam-and-incident-dementia))
+
    
 1. **Zhang W**, Lukacsovich D, Young JI, Gomez L, Schmidt MA, Martin ER, Kunkle BW, Chen X, O'Shea DM\*, Galvin JE\*, & Wang L\* (2024). [DNA Methylation Signature of a Lifestyle-based Resilience Index for Cognitive Health](https://doi.org/10.21203/rs.3.rs-5423573/v1). *Alzheimer's Research & Therapy*, In review ([code](https://github.com/TransBioInfoLab/DNAm-and-RI))
    
