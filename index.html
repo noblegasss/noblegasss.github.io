@@ -127,12 +127,6 @@
       .markdown-content a { color: #2563eb; text-decoration: underline; text-underline-offset: 2px; }
       .markdown-content a:hover { color: #1e40af; }
     </style>
-
-</head>
-  <body class="bg-academic-50 text-academic-800 font-sans antialiased">
-    <div id="root"></div>
-    
-    <!-- Consolidated Application Logic -->
   <script type="importmap">
 {
   "imports": {
@@ -145,6 +139,11 @@
   }
 }
 </script>
+</head>
+  <body class="bg-academic-50 text-academic-800 font-sans antialiased">
+    <div id="root"></div>
+    
+    <!-- Consolidated Application Logic -->
     <script type="text/babel" data-presets="react,typescript" data-type="module">
       import React, { useState, useEffect } from 'react';
       import ReactDOM from 'react-dom/client';
@@ -250,7 +249,7 @@
         location: "Miami, FL",
         github: "https://github.com/noblegasss",
         researchGate: "#", 
-        scholar: "#", 
+        scholar: "https://scholar.google.com/citations?hl=en&user=BRtsZUAAAAAJ&view_op=list_works", 
         linkedin: "https://linkedin.com/in/nova-weizhang",
         bio: `I am a Postdoctoral Associate at the University of Miami, specializing in **Multi-omics Integration**, **Machine Learning**, and **Deep Learning** for biomedical research.
         
@@ -711,9 +710,10 @@
 
               <div className="space-y-4">
                   <div className="flex gap-4">
-                    <a href={PROFILE.github} target="_blank" rel="noreferrer" className="text-brand-300 hover:text-white transition-colors"><Github size={18} /></a>
-                    <a href={`mailto:${PROFILE.email}`} className="text-brand-300 hover:text-white transition-colors"><Mail size={18} /></a>
-                    <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="text-brand-300 hover:text-white transition-colors"><ExternalLink size={18} /></a>
+                    <a href={PROFILE.github} target="_blank" rel="noreferrer" className="text-brand-300 hover:text-white transition-colors" title="GitHub"><Github size={18} /></a>
+                    <a href={PROFILE.scholar} target="_blank" rel="noreferrer" className="text-brand-300 hover:text-white transition-colors" title="Google Scholar"><GraduationCap size={18} /></a>
+                    <a href={`mailto:${PROFILE.email}`} className="text-brand-300 hover:text-white transition-colors" title="Email"><Mail size={18} /></a>
+                    <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="text-brand-300 hover:text-white transition-colors" title="LinkedIn"><ExternalLink size={18} /></a>
                   </div>
               </div>
             </aside>
