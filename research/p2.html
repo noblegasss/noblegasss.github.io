@@ -1,0 +1,36 @@
+
+<h1 style="color: #1e3a8a; font-family: 'Playfair Display', serif;">Tumor and CellLine Transcriptomes Alignment</h1>
+
+<p class="lead" style="font-size: 1.2rem; color: #475569;">
+    Utilizing <strong>Deep Neural Networks</strong> and Domain Adversarial Training to bridge the gap between in vitro models and clinical data.
+</p>
+
+<div style="background-color: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0;">
+    <strong>Key Problem:</strong> Cell lines often drift from primary tumor biology. Our model corrects for this systematic bias.
+</div>
+
+<h2>Architecture</h2>
+<p>
+    The model consists of a shared feature extractor trained with an adversarial loss.
+</p>
+
+<div style="text-align: center; margin: 40px 0;">
+    <!-- You can place an actual image tag here -->
+    <div style="background: #f1f5f9; padding: 40px; border-radius: 12px; border: 2px dashed #cbd5e1; color: #64748b;">
+        [ Architecture Diagram Placeholder ]
+    </div>
+</div>
+
+<h2>Mathematical Formulation</h2>
+<p>
+    We minimize the following objective function combining classification loss and domain confusion loss:
+</p>
+
+<p style="text-align: center; font-size: 1.2em; padding: 20px;">
+    $$ L = L_{task} - \lambda L_{domain} $$
+</p>
+
+<ul>
+    <li>$L_{task}$: Cross-entropy loss for the biological task (e.g., drug response).</li>
+    <li>$L_{domain}$: Adversarial loss to ensure feature invariance.</li>
+</ul>
