@@ -127,12 +127,6 @@
       .markdown-content a { color: #2563eb; text-decoration: underline; text-underline-offset: 2px; }
       .markdown-content a:hover { color: #1e40af; }
     </style>
-
-</head>
-  <body class="bg-academic-50 text-academic-800 font-sans antialiased">
-    <div id="root"></div>
-    
-    <!-- Consolidated Application Logic -->
   <script type="importmap">
 {
   "imports": {
@@ -145,6 +139,11 @@
   }
 }
 </script>
+</head>
+  <body class="bg-academic-50 text-academic-800 font-sans antialiased">
+    <div id="root"></div>
+    
+    <!-- Consolidated Application Logic -->
     <script type="text/babel" data-presets="react,typescript" data-type="module">
       import React, { useState, useEffect } from 'react';
       import ReactDOM from 'react-dom/client';
@@ -154,7 +153,7 @@
         MapPin, Menu, X, Code, Briefcase, GraduationCap, Award, Book, User, Globe, Download, ArrowLeft, BookOpen
       } from 'lucide-react';
 
-      // --- TYPES ---
+      // --- TYPES (Documentation only) ---
       interface Author {
         name: string;
         isMe?: boolean;
@@ -213,7 +212,6 @@
         details?: string;
       }
 
-      // Renamed to AwardItem to avoid collision with Lucide 'Award' component
       interface AwardItem {
         id: string;
         title: string;
@@ -233,17 +231,15 @@
         link?: string;
       }
 
-      // Changed from enum to const object to prevent 'SectionId is not defined' ReferenceError in Babel Standalone
+      // --- CONSTANTS ---
+      
       const SectionId = {
         INTRO: 'intro',
         RESEARCH: 'research',
         PUBLICATIONS: 'publications',
         CV: 'cv'
-      } as const;
+      };
       
-      type SectionId = typeof SectionId[keyof typeof SectionId];
-
-      // --- CONSTANTS ---
       const PROFILE = {
         name: "Wei Zhang",
         title: "Postdoctoral Associate",
@@ -265,7 +261,7 @@
         ]
       };
 
-      const NEWS: NewsItem[] = [
+      const NEWS = [
         {
           id: "n1",
           date: "May 2025",
@@ -283,7 +279,7 @@
         }
       ];
 
-      const EDUCATION: Education[] = [
+      const EDUCATION = [
         {
           id: "edu1",
           degree: "Ph.D. in Biostatistics",
@@ -309,7 +305,7 @@
         }
       ];
 
-      const PROJECTS: ResearchProject[] = [
+      const PROJECTS = [
         {
           id: "p1",
           title: "Multivariate Random Forest Framework for Multi-omics Data Integration",
@@ -343,7 +339,7 @@
         }
       ];
 
-      const PUBLICATIONS: Publication[] = [
+      const PUBLICATIONS = [
         {
           id: "s1",
           title: "The Aging Epigenome: Integrative Analyses Reveal Functional Overlap with Alzheimers Disease",
@@ -479,7 +475,7 @@
         }
       ];
 
-      const EXPERIENCES: Experience[] = [
+      const EXPERIENCES = [
         {
           id: "exp1",
           role: "Postdoctoral Associate",
@@ -523,7 +519,7 @@
         expertise: ["Package Building", "Data Analysis", "Visualization", "Statistical Modeling", "Machine Learning"]
       };
 
-      const AWARDS: AwardItem[] = [
+      const AWARDS = [
         {
           id: "a1",
           title: "Award of Academic Merit",
@@ -544,7 +540,7 @@
         }
       ];
 
-      const SERVICE: Service[] = [
+      const SERVICE = [
         { role: "Manuscript Reviewer", organization: "Nature Communication" },
         { role: "Manuscript Reviewer", organization: "Scientific Reports" },
         { role: "Manuscript Reviewer", organization: "Discover Applied Sciences" },
@@ -557,11 +553,11 @@
       ];
 
       // --- COMPONENT ---
-      const App: React.FC = () => {
-        const [activeSection, setActiveSection] = useState<SectionId>(SectionId.INTRO);
+      const App = () => {
+        const [activeSection, setActiveSection] = useState(SectionId.INTRO);
         const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-        const [selectedProject, setSelectedProject] = useState<ResearchProject | null>(null);
-        const [projectContent, setProjectContent] = useState<string>('');
+        const [selectedProject, setSelectedProject] = useState(null);
+        const [projectContent, setProjectContent] = useState('');
         const [isLoadingContent, setIsLoadingContent] = useState(false);
 
         // Scroll Spy Logic
@@ -597,7 +593,6 @@
                 return res.text();
               })
               .then(async text => {
-                // Fixed syntax error: replaced ! with ?. for optional chaining
                 if (selectedProject.contentUrl?.endsWith('.md')) {
                   const html = await marked.parse(text);
                   setProjectContent(html);
@@ -638,7 +633,7 @@
           }
         }, [selectedProject, isLoadingContent]);
 
-        const scrollTo = (id: SectionId) => {
+        const scrollTo = (id) => {
           const element = document.getElementById(id);
           if (element) {
             const offset = window.innerWidth < 1024 ? 80 : 0;
@@ -653,7 +648,7 @@
           }
         };
 
-        const NavLink = ({ id, label }: { id: SectionId, label: string }) => (
+        const NavLink = ({ id, label }) => (
           <button
             onClick={() => scrollTo(id)}
             className={`group flex items-center gap-3 text-sm font-medium transition-all duration-300 w-full text-left ${
@@ -667,7 +662,7 @@
           </button>
         );
 
-        const renderFormattedText = (text: string) => {
+        const renderFormattedText = (text) => {
           if (!text) return null;
           const parts = text.split(/(\*\*.*?\*\*)/g);
           return parts.map((part, index) => {
