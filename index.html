@@ -7,8 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Babel for compiling React/TSX in the browser -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Babel for compiling React/TSX in the browser with crossorigin for better error reporting -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
     
     <script>
       // MathJax Configuration
@@ -19,6 +19,9 @@
         },
         svg: {
           fontCache: 'global'
+        },
+        startup: {
+          typeset: false // Prevent auto-typeset on load to avoid race conditions
         }
       };
     </script>
@@ -128,10 +131,10 @@
 {
   "imports": {
     "react": "https://esm.sh/react@18.3.1",
-    "react-dom": "https://esm.sh/react-dom@18.3.1",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "react-dom": "https://esm.sh/react-dom@18.3.1?deps=react@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1",
     "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
-    "lucide-react": "https://esm.sh/lucide-react@0.344.0?external=react",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.3.1",
     "marked": "https://esm.sh/marked@12.0.0"
   }
 }
@@ -209,7 +212,8 @@
         details?: string;
       }
 
-      interface Award {
+      // Renamed to AwardItem to avoid collision with Lucide 'Award' component
+      interface AwardItem {
         id: string;
         title: string;
         organization: string;
@@ -228,12 +232,15 @@
         link?: string;
       }
 
-      enum SectionId {
-        INTRO = 'intro',
-        RESEARCH = 'research',
-        PUBLICATIONS = 'publications',
-        CV = 'cv'
-      }
+      // Changed from enum to const object to prevent 'SectionId is not defined' ReferenceError in Babel Standalone
+      const SectionId = {
+        INTRO: 'intro',
+        RESEARCH: 'research',
+        PUBLICATIONS: 'publications',
+        CV: 'cv'
+      } as const;
+      
+      type SectionId = typeof SectionId[keyof typeof SectionId];
 
       // --- CONSTANTS ---
       const PROFILE = {
@@ -515,7 +522,7 @@
         expertise: ["Package Building", "Data Analysis", "Visualization", "Statistical Modeling", "Machine Learning"]
       };
 
-      const AWARDS: Award[] = [
+      const AWARDS: AwardItem[] = [
         {
           id: "a1",
           title: "Award of Academic Merit",
@@ -589,7 +596,8 @@
                 return res.text();
               })
               .then(async text => {
-                if (selectedProject.contentUrl!.endsWith('.md')) {
+                // Fixed syntax error: replaced ! with ?. for optional chaining
+                if (selectedProject.contentUrl?.endsWith('.md')) {
                   const html = await marked.parse(text);
                   setProjectContent(html);
                 } else {
@@ -599,7 +607,7 @@
               })
               .catch(err => {
                 console.error(err);
-                setProjectContent('<p class="text-red-600">Failed to load content file.</p>');
+                setProjectContent('<p class="text-red-600">Failed to load content file. Please ensure the research/ folder is correctly uploaded to the root of your repository.</p>');
                 setIsLoadingContent(false);
               });
           } else if (selectedProject) {
@@ -610,13 +618,18 @@
           }
         }, [selectedProject]);
 
-        // Lock body scroll and trigger MathJax
+        // Lock body scroll and trigger MathJax safely
         useEffect(() => {
           if (selectedProject) {
             document.body.style.overflow = 'hidden';
-            if (window.MathJax && !isLoadingContent) {
+            if (!isLoadingContent) {
               setTimeout(() => {
-                  window.MathJax.typesetPromise();
+                // Safeguard against missing MathJax or its functions
+                if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+                    window.MathJax.typesetPromise();
+                } else if (window.MathJax && typeof window.MathJax.typeset === 'function') {
+                    window.MathJax.typeset();
+                }
               }, 100);
             }
           } else {
