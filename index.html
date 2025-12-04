@@ -143,23 +143,9 @@
     <!-- 🔹 the React root node -->
     <div id="root"></div>
 
-    <!-- 🔹 ADD THE SCRIPT RIGHT HERE -->
-    <script type="module">
-      import React from "react";
-      import { createRoot } from "react-dom/client";
-
-      function App() {
-        return React.createElement(
-          "div",
-          { className: "max-w-5xl mx-auto px-4 py-10" },
-          "Hello from React"
-        );
-      }
-
-      const container = document.getElementById("root");
-      const root = createRoot(container);
-      root.render(React.createElement(App));
-    </script>
+    
+    <!-- Entry Point for Babel to compile and run the app -->
+    <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
 
   </body>
 </html>
