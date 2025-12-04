@@ -1,1 +1,1 @@
-// This file is redundant and can be safely deleted.
+// Deleted

@@ -139,7 +139,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-academic-50 flex flex-col lg:flex-row selection:bg-brand-200 selection:text-brand-950 font-sans">
       
       {/* Sidebar Navigation (Desktop) */}
-      <aside className="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-brand-900 border-r border-brand-800 px-8 py-12 justify-between text-white shadow-xl z-20">
+      <aside className="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-brand-900 border-r border-brand-800 px-8 py-12 justify-between text-white shadow-xl z-20 shrink-0">
         <div className="space-y-10">
           <div className="space-y-4">
             <div className="w-20 h-20 rounded-full bg-white text-brand-900 flex items-center justify-center text-2xl font-serif font-bold border-4 border-brand-700 shadow-lg">
@@ -189,7 +189,7 @@ const App: React.FC = () => {
       )}
 
       {/* Main Content */}
-      <main className="flex-1 w-full max-w-5xl mx-auto px-6 py-12 lg:px-12 lg:py-16 space-y-24">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-6 py-12 lg:px-12 lg:py-16 space-y-24">
         
         {/* Intro Section */}
         <section id={SectionId.INTRO} className="space-y-12 animate-fade-in-up">
@@ -504,7 +504,7 @@ const App: React.FC = () => {
           </div>
 
           {/* Article Content */}
-          <div className="max-w-4xl mx-auto w-full px-6 py-12 md:py-16 space-y-10 animate-fade-in-up">
+          <div className="max-w-6xl mx-auto w-full px-6 py-12 md:py-16 space-y-10 animate-fade-in-up">
             
             <div className="space-y-6">
                <div className="flex flex-wrap gap-3">
