@@ -6,6 +6,10 @@
     <title>Wei Zhang | Academic Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Babel for compiling React/TSX in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
     <script>
       // MathJax Configuration
       window.MathJax = {
@@ -136,5 +140,8 @@
 </head>
   <body class="bg-academic-50 text-academic-800 font-sans antialiased">
     <div id="root"></div>
+    
+    <!-- Entry Point for Babel to compile and run the app -->
+    <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
   </body>
 </html>

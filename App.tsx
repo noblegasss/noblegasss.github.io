@@ -1,12 +1,11 @@
-
 import React, { useState, useEffect } from 'react';
 import { marked } from 'marked';
 import { 
   Github, Mail, ExternalLink, 
   MapPin, Menu, X, Code, Briefcase, GraduationCap, Award, Book, User, Globe, Download, ArrowLeft, BookOpen
-} from './components/Icons';
-import { PROFILE, PUBLICATIONS, PROJECTS, EXPERIENCES, NEWS, EDUCATION, AWARDS, SERVICE, SKILLS } from './constants';
-import { SectionId, ResearchProject } from './types';
+} from './components/Icons.tsx';
+import { PROFILE, PUBLICATIONS, PROJECTS, EXPERIENCES, NEWS, EDUCATION, AWARDS, SERVICE, SKILLS } from './constants.ts';
+import { SectionId, ResearchProject } from './types.ts';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<SectionId>(SectionId.INTRO);

@@ -1,5 +1,4 @@
-
-import { Experience, Publication, ResearchProject, NewsItem, Education, Award, Service } from "./types";
+import { Experience, Publication, ResearchProject, NewsItem, Education, Award, Service } from "./types.ts";
 
 export const PROFILE = {
   name: "Wei Zhang",
