@@ -872,19 +872,7 @@
                   {PROJECTS.map(project => (
                     <div 
                         key={project.id} 
-                        oonClick={() => {
-                          const url = project.contentUrl;
-
-                          // External URL → open directly
-                          if (url && /^https?:\/\//.test(url)) {
-                            window.open(url, "_blank", "noopener,noreferrer");
-                            return; // stop here, don't open modal
-                          }
-
-                          // Otherwise → open modal normally
-                          setSelectedProject(project);
-                        }}
-
+                        onClick={() => setSelectedProject(project)}
                         className="group relative bg-white border border-brand-100 rounded-xl p-8 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 cursor-pointer flex flex-col justify-between h-[360px] overflow-hidden"
                     >
                       {/* Decorative Background Element */}
