@@ -630,7 +630,7 @@
 
           const url = selectedProject.contentUrl;
 
-          // No URL → fallback
+          // If no contentUrl → show fallback description
           if (!url) {
             setProjectContent(
               `<p>${selectedProject.longDescription || selectedProject.description}</p>`
@@ -638,13 +638,19 @@
             return;
           }
 
-          // External URL → we already opened it on click, so skip
-          if (/^https?:\/\//.test(url)) {
-            setProjectContent(""); // no modal content
+          // Detect external URL (starts with http or https)
+          const isExternal = /^https?:\/\//.test(url);
+
+          if (isExternal) {
+            // Open the external URL directly in new tab
+            window.open(url, "_blank", "noopener,noreferrer");
+
+            // OPTIONAL: close modal or clear content since we won’t display anything
+            setProjectContent("");
             return;
           }
 
-          // Local file → fetch as usual
+          // Otherwise, this is a local file → fetch it
           setIsLoadingContent(true);
 
           fetch(url)
@@ -664,11 +670,12 @@
             .catch((err) => {
               console.error(err);
               setProjectContent(
-                '<p class="text-red-600">Failed to load content.</p>'
+                '<p class="text-red-600">Failed to load content file. Please ensure your content is placed correctly in the repository.</p>'
               );
               setIsLoadingContent(false);
             });
         }, [selectedProject]);
+
 
 
 
