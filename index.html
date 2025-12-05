@@ -626,54 +626,13 @@
             setProjectContent("");
             return;
           }
-
-          const url = selectedProject.contentUrl;
-
-          // If no contentUrl → show fallback description
-          if (!url) {
-            setProjectContent(
-              `<p>${selectedProject.longDescription || selectedProject.description}</p>`
-            );
-            return;
-          }
-
-          // Detect external URL (starts with http or https)
-          const isExternal = /^https?:\/\//.test(url);
-
-          if (isExternal) {
-            // Open the external URL directly in new tab
-            window.open(url, "_blank", "noopener,noreferrer");
-
-            // OPTIONAL: close modal or clear content since we won’t display anything
-            setProjectContent("");
-            return;
-          }
-
-          // Otherwise, this is a local file → fetch it
-          setIsLoadingContent(true);
-
-          fetch(url)
-            .then((res) => {
-              if (!res.ok) throw new Error("Failed to load content");
-              return res.text();
-            })
-            .then(async (text) => {
-              if (url.endsWith(".md")) {
-                const html = await marked.parse(text);
-                setProjectContent(html);
-              } else {
-                setProjectContent(text);
-              }
-              setIsLoadingContent(false);
-            })
-            .catch((err) => {
-              console.error(err);
-              setProjectContent(
-                '<p class="text-red-600">Failed to load content file. Please ensure your content is placed correctly in the repository.</p>'
-              );
-              setIsLoadingContent(false);
-            });
+        
+          // We only ever open the modal for projects WITHOUT contentUrl now
+          setProjectContent(
+            `<p>${selectedProject.longDescription || selectedProject.description}</p>`
+          );
         }, [selectedProject]);
+
 
 
         // Lock body scroll and trigger MathJax safely
@@ -858,7 +817,16 @@
                   {PROJECTS.map(project => (
                     <div 
                         key={project.id} 
-                        onClick={() => setSelectedProject(project)}
+                        onClick={() => {
+                          if (project.contentUrl) {
+                            // Always open the file/URL directly (md, html, pdf, external link, etc.)
+                            window.open(project.contentUrl, "_blank", "noopener,noreferrer");
+                            return; // do NOT open the modal
+                          }
+                          // Only use the modal if there is no contentUrl
+                          setSelectedProject(project);
+                        }}
+
                         className="group relative bg-white border border-brand-100 rounded-xl p-8 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 cursor-pointer flex flex-col justify-between h-[360px] overflow-hidden"
                     >
                       {/* Decorative Background Element */}
