@@ -596,6 +596,7 @@
         const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
         const [selectedProject, setSelectedProject] = useState(null);
         const [projectContent, setProjectContent] = useState('');
+        const [isLoadingContent, setIsLoadingContent] = useState(false);
 
         // Scroll Spy Logic
         useEffect(() => {
@@ -1104,12 +1105,17 @@
 
                   {/* Render Dynamic Content from File */}
                   <div className="min-h-[200px] bg-white rounded-xl p-8 border border-brand-100 shadow-sm markdown-content">
-                    <div 
-                      className="prose prose-lg prose-indigo max-w-none"
-                      dangerouslySetInnerHTML={{ __html: projectContent }} 
-                    />
+                    {isLoadingContent ? (
+                        <div className="flex items-center justify-center py-20 text-brand-600">
+                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-600"></div>
+                        </div>
+                    ) : (
+                        <div 
+                          className="prose prose-lg prose-indigo max-w-none"
+                          dangerouslySetInnerHTML={{ __html: projectContent }} 
+                        />
+                    )}
                   </div>
-
 
                   {/* Footer Navigation */}
                   <div className="pt-12 mt-12 border-t border-brand-100 flex justify-center">
