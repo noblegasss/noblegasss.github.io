@@ -319,7 +319,7 @@
           tools: ["R", "Random Forest", "Method Development"],
           status: "Ongoing",
           github: "https://github.com/noblegasss/multiRF-variable-selection",
-          contentUrl: "research/mrf1.html"
+          contentUrl: "https://gemini.google.com/share/e3a9ec5c3c19"
         },
         {
           id: "p2",
@@ -622,35 +622,67 @@
         }, []);
 
         // Fetch logic for project content
+        // Fetch logic for project content
         useEffect(() => {
-          if (selectedProject?.contentUrl) {
-            setIsLoadingContent(true);
-            fetch(selectedProject.contentUrl)
-              .then(res => {
-                if (!res.ok) throw new Error("Failed to load content");
-                return res.text();
-              })
-              .then(async text => {
-                if (selectedProject.contentUrl?.endsWith('.md')) {
-                  const html = await marked.parse(text);
-                  setProjectContent(html);
-                } else {
-                  setProjectContent(text);
-                }
-                setIsLoadingContent(false);
-              })
-              .catch(err => {
-                console.error(err);
-                setProjectContent('<p class="text-red-600">Failed to load content file. Please ensure the research/ folder is correctly uploaded to the root of your repository.</p>');
-                setIsLoadingContent(false);
-              });
-          } else if (selectedProject) {
-            // Fallback if no URL
-            setProjectContent(`<p>${selectedProject.longDescription || selectedProject.description}</p>`);
-          } else {
-            setProjectContent('');
+          if (!selectedProject) {
+            setProjectContent("");
+            return;
           }
+
+          const url = selectedProject.contentUrl;
+
+          // No URL → fallback to description
+          if (!url) {
+            setProjectContent(
+              `<p>${selectedProject.longDescription || selectedProject.description}</p>`
+            );
+            return;
+          }
+
+          // Detect external URL (starts with http/https and not same origin)
+          const isExternal =
+            /^https?:\/\//.test(url) && !url.startsWith(window.location.origin);
+
+          if (isExternal) {
+            // Just show a link instead of fetching (avoids CORS issues)
+            setProjectContent(`
+              <p class="text-sm text-academic-700">
+                View project details here:
+                <a href="${url}" target="_blank" rel="noopener noreferrer"
+                  class="text-brand-600 hover:text-brand-800 underline">
+                  Open external link
+                </a>
+              </p>
+            `);
+            setIsLoadingContent(false);
+            return;
+          }
+
+          // Local file inside the repo → fetch as before
+          setIsLoadingContent(true);
+          fetch(url)
+            .then((res) => {
+              if (!res.ok) throw new Error("Failed to load content");
+              return res.text();
+            })
+            .then(async (text) => {
+              if (url.endsWith(".md")) {
+                const html = await marked.parse(text);
+                setProjectContent(html);
+              } else {
+                setProjectContent(text);
+              }
+              setIsLoadingContent(false);
+            })
+            .catch((err) => {
+              console.error(err);
+              setProjectContent(
+                '<p class="text-red-600">Failed to load content file. Please ensure the research/ folder is correctly uploaded to the root of your repository.</p>'
+              );
+              setIsLoadingContent(false);
+            });
         }, [selectedProject]);
+
 
         // Lock body scroll and trigger MathJax safely
         useEffect(() => {
