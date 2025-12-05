@@ -622,7 +622,6 @@
         }, []);
 
         // Fetch logic for project content
-        // Fetch logic for project content
         useEffect(() => {
           if (!selectedProject) {
             setProjectContent("");
@@ -631,7 +630,7 @@
 
           const url = selectedProject.contentUrl;
 
-          // No URL → fallback to description
+          // If no contentUrl → show fallback description
           if (!url) {
             setProjectContent(
               `<p>${selectedProject.longDescription || selectedProject.description}</p>`
@@ -639,27 +638,21 @@
             return;
           }
 
-          // Detect external URL (starts with http/https and not same origin)
-          const isExternal =
-            /^https?:\/\//.test(url) && !url.startsWith(window.location.origin);
+          // Detect external URL (starts with http or https)
+          const isExternal = /^https?:\/\//.test(url);
 
           if (isExternal) {
-            // Just show a link instead of fetching (avoids CORS issues)
-            setProjectContent(`
-              <p class="text-sm text-academic-700">
-                View project details here:
-                <a href="${url}" target="_blank" rel="noopener noreferrer"
-                  class="text-brand-600 hover:text-brand-800 underline">
-                  Open external link
-                </a>
-              </p>
-            `);
-            setIsLoadingContent(false);
+            // Open the external URL directly in new tab
+            window.open(url, "_blank", "noopener,noreferrer");
+
+            // OPTIONAL: close modal or clear content since we won’t display anything
+            setProjectContent("");
             return;
           }
 
-          // Local file inside the repo → fetch as before
+          // Otherwise, this is a local file → fetch it
           setIsLoadingContent(true);
+
           fetch(url)
             .then((res) => {
               if (!res.ok) throw new Error("Failed to load content");
@@ -677,11 +670,12 @@
             .catch((err) => {
               console.error(err);
               setProjectContent(
-                '<p class="text-red-600">Failed to load content file. Please ensure the research/ folder is correctly uploaded to the root of your repository.</p>'
+                '<p class="text-red-600">Failed to load content file. Please ensure your content is placed correctly in the repository.</p>'
               );
               setIsLoadingContent(false);
             });
         }, [selectedProject]);
+
 
 
         // Lock body scroll and trigger MathJax safely
