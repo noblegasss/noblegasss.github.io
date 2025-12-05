@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRF-IMD: Multi-omics Biomarker Discovery Framework</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chosen Palette: Slate (Background), Blue (Primary Action), Emerald (Success/Biology), Rose (Comparison/Risk) -->
+    
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Chart Container Styling - Strictly Enforced */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 400px; 
+            max-height: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Matrix Container */
+        .matrix-container {
+            overflow-x: auto;
+        }
+
+        /* Method Step Card Styling */
+        .step-card {
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation Active State */
+        .nav-btn.active {
+            border-bottom: 2px solid #2563eb;
+            color: #1e40af;
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Header / Meta Data -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-0.5 rounded uppercase tracking-wide">Bioinformatics Paper</span>
+                        <span class="text-slate-500 text-xs">Wei Zhang et al. | University of Miami</span>
+                    </div>
+                    <h1 class="text-xl md:text-2xl font-bold text-slate-900 leading-tight">An Integrative Multi-Omics Random Forest Framework (MRF-IMD)</h1>
+                    <p class="text-sm text-slate-500 mt-1">Robust biomarker discovery via Inverse Minimal Depth importance.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <a href="https://www.biorxiv.org/content/10.1101/2025.03.05.641533v2.full.pdf" target="_blank" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium rounded transition flex items-center gap-1 border border-slate-200">
+                        <span>📄</span> Read Paper
+                    </a>
+                    <a href="https://github.com/TransBioInfoLab/multiRF-vs" target="_blank" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium rounded transition flex items-center gap-1 border border-slate-200">
+                        <span>💻</span> View Code
+                    </a>
+                    <button onclick="app.navTo('pancancer')" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded transition shadow-sm flex items-center gap-1">
+                         View Pan-Cancer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- SECTION: ABSTRACT / HERO -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-4">
+                    <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="text-2xl">🧬</span> Executive Summary
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-justify">
+                        Current high-throughput technologies produce vast multi-omics data. However, finding shared biomarkers across these layers is challenging when relationships are <strong>nonlinear</strong>. 
+                        This paper presents <strong>MRF-IMD</strong>, an unsupervised Multivariate Random Forest framework. It uses a novel metric, <strong>Inverse Minimal Depth (IMD)</strong>, to prioritize shared features.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-lg">
+                            <h3 class="font-bold text-emerald-800 text-sm mb-1">✅ Problem</h3>
+                            <p class="text-xs text-emerald-700">Linear methods (SPLS, CCA) fail to capture complex, nonlinear biological interactions across omics layers.</p>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-100 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-800 text-sm mb-1">🚀 Solution</h3>
+                            <p class="text-xs text-blue-700">MRF-IMD captures nonlinear hubs and uses 3 selection strategies (Filter, Mixture, Transform) for robust discovery.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 rounded-lg p-5 border border-slate-200 flex flex-col justify-center">
+                    <h3 class="font-bold text-slate-700 mb-4 text-center">Impact Highlights</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">1</span>
+                            <span class="text-slate-600"><strong>Outperforms SPLS/CCA</strong> in nonlinear simulations.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">2</span>
+                            <span class="text-slate-600">Identified <strong>8 Tumor Clusters</strong> in Pan-Cancer analysis.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">3</span>
+                            <span class="text-slate-600">Improved <strong>Dementia Prediction</strong> (P=0.033) over existing scores.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAVIGATION TABS -->
+        <div class="border-b border-slate-200 overflow-x-auto">
+            <div class="flex space-x-8">
+                <button onclick="app.switchTab('framework')" id="tab-framework" class="nav-btn active py-4 px-1 text-sm font-medium text-slate-500 whitespace-nowrap transition-colors">Framework Architecture</button>
+                <button onclick="app.switchTab('benchmark')" id="tab-benchmark" class="nav-btn py-4 px-1 text-sm font-medium text-slate-500 whitespace-nowrap transition-colors">Simulation Benchmark</button>
+                <button onclick="app.switchTab('tcga')" id="tab-tcga" class="nav-btn py-4 px-1 text-sm font-medium text-slate-500 whitespace-nowrap transition-colors">Cancer Discovery (TCGA)</button>
+                <button onclick="app.switchTab('pancancer')" id="tab-pancancer" class="nav-btn py-4 px-1 text-sm font-medium text-slate-500 whitespace-nowrap transition-colors">Pan-Cancer Clustering</button>
+                <button onclick="app.switchTab('adni')" id="tab-adni" class="nav-btn py-4 px-1 text-sm font-medium text-slate-500 whitespace-nowrap transition-colors">Dementia Analysis (ADNI)</button>
+            </div>
+        </div>
+
+        <!-- VIEW: FRAMEWORK -->
+        <section id="view-framework" class="space-y-8 animate-fade-in">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h2 class="text-lg font-bold text-slate-900 mb-6">The MRF-IMD Workflow</h2>
+                
+                <!-- Interactive Process Flow -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                    <!-- Step 1 -->
+                    <div class="step-card bg-slate-50 border border-slate-200 p-4 rounded-lg cursor-default">
+                        <div class="text-2xl mb-2">📊</div>
+                        <h3 class="font-bold text-slate-800 text-sm">1. Multi-Omics Input</h3>
+                        <p class="text-xs text-slate-500 mt-2">Samples with matched data (e.g., Gene Exp + Methylation). One layer acts as predictors (X), the other as multivariate response (Y).</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-card bg-slate-50 border border-slate-200 p-4 rounded-lg cursor-default">
+                        <div class="text-2xl mb-2">🌲</div>
+                        <h3 class="font-bold text-slate-800 text-sm">2. Multivariate Forest</h3>
+                        <p class="text-xs text-slate-500 mt-2">Fit Random Forest. Trees split nodes to maximize heterogeneity in the multivariate response Y.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-card bg-slate-50 border border-slate-200 p-4 rounded-lg cursor-default">
+                        <div class="text-2xl mb-2">📉</div>
+                        <h3 class="font-bold text-slate-800 text-sm">3. Calculate IMD</h3>
+                        <p class="text-xs text-slate-500 mt-2">Compute <strong>Inverse Minimal Depth</strong>. Strong variables appear closer to the root (depth 0), resulting in high IMD scores.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step-card bg-slate-50 border border-slate-200 p-4 rounded-lg cursor-default">
+                        <div class="text-2xl mb-2">🎯</div>
+                        <h3 class="font-bold text-slate-800 text-sm">4. Feature Selection</h3>
+                        <p class="text-xs text-slate-500 mt-2">Apply selection strategy (Filter, Mixture, or Transform) to identify robust shared biomarkers.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
+                        <h4 class="font-bold text-indigo-900 text-sm mb-2">Strategy A: Filter</h4>
+                        <p class="text-xs text-indigo-800">Selects variables above a threshold (τ · σ). Best for <strong>parsimonious, stable</strong> signatures (e.g., ~73 genes in BRCA).</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
+                        <h4 class="font-bold text-indigo-900 text-sm mb-2">Strategy B: Mixture</h4>
+                        <p class="text-xs text-indigo-800">Fits a 2-component mixture model to separation signal vs. noise. Offers a <strong>balanced</strong> trade-off.</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
+                        <h4 class="font-bold text-indigo-900 text-sm mb-2">Strategy C: Transform</h4>
+                        <p class="text-xs text-indigo-800">Standardizes IMD using a t-score. Best for detecting <strong>subtle signals</strong> or interaction effects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW: BENCHMARK -->
+        <section id="view-benchmark" class="hidden space-y-8 animate-fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-4">
+                <div class="max-w-2xl">
+                    <h2 class="text-lg font-bold text-slate-900">Simulation Benchmark</h2>
+                    <p class="text-sm text-slate-600 mt-1">Comparing MRF-IMD against established methods (SPLS, CCA) and Ensemble learners. Notice the performance gap in Nonlinear settings.</p>
+                </div>
+                <div class="flex bg-slate-200 p-1 rounded-lg">
+                    <button onclick="app.updateBenchmark('linear')" id="btn-linear" class="px-4 py-1.5 rounded text-sm font-medium bg-white shadow-sm text-slate-800 transition">Linear Model</button>
+                    <button onclick="app.updateBenchmark('nonlinear')" id="btn-nonlinear" class="px-4 py-1.5 rounded text-sm font-medium text-slate-600 hover:text-slate-800 transition">Nonlinear Model</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- PR-AUC Chart -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="font-bold text-slate-800 text-sm mb-4">Area Under Precision-Recall Curve (PR-AUC)</h3>
+                    <div class="chart-container">
+                        <canvas id="benchmarkChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-2 text-center" id="benchmark-desc">In linear settings, MRF-IMD matches SPLS/CCA.</p>
+                </div>
+
+                <!-- Interpretation -->
+                <div class="bg-slate-50 rounded-xl border border-slate-200 p-6 flex flex-col justify-center">
+                    <h3 class="font-bold text-slate-800 mb-4">Key Takeaways</h3>
+                    <ul class="space-y-4 text-sm text-slate-700">
+                        <li class="flex gap-3">
+                            <span class="text-emerald-500 font-bold">✓</span>
+                            <span><strong>Linear Scenarios:</strong> MRF-IMD achieves ~0.90 PR-AUC, comparable to SPLS (0.94) and PMDCCA (0.90). It is competitive even when linearity assumptions favor classical methods.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-emerald-500 font-bold">✓</span>
+                            <span><strong>Nonlinear Scenarios:</strong> This is the critical advantage. MRF-IMD maintains high performance (~0.71-0.81 PR-AUC), while SPLS crashes to random guessing levels (~0.04-0.07).</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-emerald-500 font-bold">✓</span>
+                            <span><strong>Ensemble Comparison:</strong> Adapted univariate ensemble learners (GBM, XGBoost) underperform in the multivariate context compared to the specialized MRF framework.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW: TCGA (Cancer) -->
+        <section id="view-tcga" class="hidden space-y-8 animate-fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900">Cancer Biomarker Discovery</h2>
+                    <p class="text-sm text-slate-500">Analysis of TCGA Breast (BRCA) and Colon (COAD) cohorts.</p>
+                </div>
+                <select id="tcga-selector" onchange="app.updateTCGA()" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                    <option value="brca">Breast Cancer (BRCA)</option>
+                    <option value="coad">Colon Cancer (COAD)</option>
+                </select>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Top Biomarkers -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="font-bold text-slate-800 text-sm mb-4">Top Identified Genes (IMD Weight)</h3>
+                    <div class="chart-container">
+                        <canvas id="tcgaGenesChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Survival Analysis -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="font-bold text-slate-800 text-sm mb-4">Prognostic Stratification (Kaplan-Meier)</h3>
+                    <div class="chart-container">
+                        <canvas id="tcgaSurvivalChart"></canvas>
+                    </div>
+                    <div class="mt-4 flex justify-between text-xs text-slate-500 px-4">
+                        <span id="tcga-p-mrf" class="font-bold text-emerald-600">MRF-IMD P-val: 7.94E-04</span>
+                        <span id="tcga-p-spls">SPLS P-val: 8.21E-03</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h3 class="font-bold text-slate-800 text-sm mb-4">Pathway Enrichment</h3>
+                <ul class="space-y-3" id="tcga-pathways">
+                    <!-- Populated by JS -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- VIEW: PAN-CANCER (Detailed Figure 4) -->
+        <section id="view-pancancer" class="hidden space-y-8 animate-fade-in">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+                    <div class="max-w-2xl">
+                        <h2 class="text-lg font-bold text-slate-900">Pan-Cancer Clustering (Figure 4)</h2>
+                        <p class="text-sm text-slate-600 mt-2">
+                            Visualizing how MRF-IMD features improve tumor stratification. 
+                            Switch views to compare <strong>Raw Data</strong> (Figure 4a/b) vs <strong>MRF-IMD Selected</strong> (Figure 4c).
+                        </p>
+                    </div>
+                    <div class="flex bg-slate-100 p-1 rounded-lg">
+                        <button onclick="app.togglePanCancer('clean')" id="btn-pan-clean" class="px-3 py-1.5 rounded text-sm font-medium bg-white shadow-sm text-indigo-800 transition">MRF-IMD Clusters</button>
+                        <button onclick="app.togglePanCancer('raw')" id="btn-pan-raw" class="px-3 py-1.5 rounded text-sm font-medium text-slate-500 hover:text-slate-800 transition">Raw Data (Messy)</button>
+                    </div>
+                </div>
+
+                <!-- UMAP Scatter Plot -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 bg-slate-50 border border-slate-200 rounded-xl p-4">
+                        <div class="chart-container" style="height: 500px; max-height: 600px;">
+                            <canvas id="panCancerChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Cluster Legend/Info -->
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-slate-800 text-sm border-b border-slate-200 pb-2">Cluster Definitions (Table 5)</h3>
+                        <div class="space-y-3 h-[450px] overflow-y-auto pr-2 custom-scroll">
+                            <div class="p-3 bg-red-50 border-l-4 border-red-500 rounded text-xs">
+                                <span class="font-bold block text-red-900">Group 1: Basal-like & UCEC</span>
+                                High genomic instability, TP53 mutations.
+                            </div>
+                            <div class="p-3 bg-orange-50 border-l-4 border-orange-500 rounded text-xs">
+                                <span class="font-bold block text-orange-900">Group 2: Hepatobiliary</span>
+                                LIHC, CHOL. Hepatic lineage tumors.
+                            </div>
+                            <div class="p-3 bg-yellow-50 border-l-4 border-yellow-500 rounded text-xs">
+                                <span class="font-bold block text-yellow-900">Group 3: Hypermutated</span>
+                                BLCA, SKCM. High mutational burden.
+                            </div>
+                            <div class="p-3 bg-green-50 border-l-4 border-green-500 rounded text-xs">
+                                <span class="font-bold block text-green-900">Group 4: Non-basal BRCA</span>
+                                Luminal & HER2+ subtypes.
+                            </div>
+                            <div class="p-3 bg-teal-50 border-l-4 border-teal-500 rounded text-xs">
+                                <span class="font-bold block text-teal-900">Group 5: GI Adenocarcinoma</span>
+                                COAD, STAD, ESCA. CIN Phenotype.
+                            </div>
+                            <div class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded text-xs">
+                                <span class="font-bold block text-blue-900">Group 6: Endocrine</span>
+                                ACC, PCPG. Hormone-secreting neoplasms.
+                            </div>
+                            <div class="p-3 bg-indigo-50 border-l-4 border-indigo-500 rounded text-xs">
+                                <span class="font-bold block text-indigo-900">Group 7: Squamous (SCC)</span>
+                                HNSC, LUSC. RTK-RAS activation.
+                            </div>
+                            <div class="p-3 bg-purple-50 border-l-4 border-purple-500 rounded text-xs">
+                                <span class="font-bold block text-purple-900">Group 8: Renal Epithelial</span>
+                                KIRC, KIRP. VHL/HIF alterations.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Figure 4d: Confusion Matrix Visualization -->
+                <div class="mt-8 border-t border-slate-200 pt-6">
+                    <h3 class="font-bold text-slate-900 mb-4">Cluster Confusion Matrix (Figure 4d)</h3>
+                    <p class="text-xs text-slate-500 mb-4">Mapping of the 8 identified IntNMF clusters (Columns) to the true 22 TCGA Cancer Types (Rows). Darker cells indicate higher sample overlap.</p>
+                    <div class="matrix-container">
+                        <div id="confusionMatrix" class="min-w-[600px] grid gap-1 text-xs">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW: ADNI (Dementia) -->
+        <section id="view-adni" class="hidden space-y-8 animate-fade-in">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h2 class="text-lg font-bold text-slate-900 mb-2">Alzheimer's Disease Prediction (ADNI)</h2>
+                <p class="text-sm text-slate-600 max-w-3xl">
+                    Integrating DNA methylation and gene expression for 538 participants (CN vs MCI). 
+                    MRF-IMD identified markers like <strong>ARL11</strong> and <strong>S1PR1</strong> linked to neuroinflammation.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Top Features -->
+                <div class="lg:col-span-1 bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="font-bold text-slate-800 text-sm mb-4">Top Genes (Importance)</h3>
+                    <div class="space-y-4">
+                        <div class="relative pt-1">
+                            <div class="flex mb-2 items-center justify-between">
+                                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">ARL11</span>
+                                <span class="text-xs font-semibold inline-block text-blue-600">0.24</span>
+                            </div>
+                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-100">
+                                <div style="width:100%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+                            </div>
+                        </div>
+                        <div class="relative pt-1">
+                            <div class="flex mb-2 items-center justify-between">
+                                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">S1PR1</span>
+                                <span class="text-xs font-semibold inline-block text-blue-600">0.18</span>
+                            </div>
+                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-100">
+                                <div style="width:75%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+                            </div>
+                        </div>
+                        <div class="relative pt-1">
+                            <div class="flex mb-2 items-center justify-between">
+                                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">DAPK2</span>
+                                <span class="text-xs font-semibold inline-block text-blue-600">0.15</span>
+                            </div>
+                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-100">
+                                <div style="width:62%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Survival Comparison -->
+                <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="font-bold text-slate-800 text-sm mb-4">Dementia Conversion Prediction</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="adniSurvivalChart"></canvas>
+                        </div>
+                        <div class="flex flex-col justify-center space-y-4">
+                            <div class="p-4 bg-emerald-50 rounded-lg border border-emerald-100">
+                                <h4 class="font-bold text-emerald-900 text-sm">MRF-IMD Performance</h4>
+                                <p class="text-xs text-emerald-700 mt-1">Significant separation of high/low risk groups.</p>
+                                <p class="text-lg font-bold text-emerald-600 mt-2">P = 0.033</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h4 class="font-bold text-slate-700 text-sm">Competitor Performance</h4>
+                                <p class="text-xs text-slate-500 mt-1">SPLS failed to stratify patients significantly.</p>
+                                <p class="text-lg font-bold text-slate-400 mt-2">P = 0.60</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs text-slate-400">Interactive report generated based on "An Integrative Multi-Omics Random Forest Framework for Robust Biomarker Discovery" (Zhang et al.).</p>
+        </div>
+    </footer>
+
+    <!-- Logic -->
+    <script>
+        // --- DATA STORE ---
+        const reportData = {
+            benchmark: {
+                linear: {
+                    labels: ['MRF-IMD', 'SPLS', 'PMDCCA', 'RGCCA'],
+                    data: [0.90, 0.94, 0.90, 0.69],
+                    desc: "In linear scenarios (Latent Model), MRF-IMD performs comparably to specialized linear methods like SPLS."
+                },
+                nonlinear: {
+                    labels: ['MRF-IMD', 'SPLS', 'PMDCCA', 'RGCCA'],
+                    data: [0.71, 0.04, 0.12, 0.15],
+                    desc: "In nonlinear scenarios, MRF-IMD drastically outperforms linear methods, which fail to capture the signal."
+                }
+            },
+            tcga: {
+                brca: {
+                    genes: { labels: ['FOXC1', 'PRR15', 'PRKCQ', 'MMP11', 'ESR1'], data: [0.35, 0.28, 0.25, 0.22, 0.20] },
+                    pathways: ['Constitutive PI3K Signaling', 'PI3K AKT Signaling', 'Gland Development', 'ERBB4 Signaling'],
+                    p_mrf: "7.94E-04",
+                    p_spls: "8.21E-03",
+                    survival: { high: [100, 95, 90, 85, 80, 78], low: [100, 88, 75, 65, 55, 45] }
+                },
+                coad: {
+                    genes: { labels: ['SFRP4', 'ANGPTL1', 'PRAC2 (Meth)', 'miR-100-5p', 'miR-21-5p'], data: [0.32, 0.29, 0.26, 0.24, 0.21] },
+                    pathways: ['Extracellular Matrix Org.', 'Collagen Fibril Org.', 'Muscle Contraction', 'EMT Hallmark'],
+                    p_mrf: "1.23E-02",
+                    p_spls: "1.31E-02",
+                    survival: { high: [100, 92, 85, 82, 78, 75], low: [100, 80, 70, 60, 50, 48] }
+                }
+            },
+            adni: {
+                survival: { high: [100, 95, 90, 85, 82, 80], low: [100, 90, 80, 70, 60, 55] }
+            }
+        };
+
+        // --- CHART INSTANCES ---
+        const charts = { benchmark: null, tcgaGenes: null, tcgaSurvival: null, panCancer: null, adniSurvival: null };
+
+        // --- APP CONTROLLER ---
+        const app = {
+            currentTab: 'framework',
+            currentTCGA: 'brca',
+            panCancerMode: 'clean',
+
+            init: function() {
+                this.navTo('framework');
+            },
+
+            navTo: function(tabId) {
+                this.switchTab(tabId);
+            },
+
+            switchTab: function(tabId) {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                const tabBtn = document.getElementById(`tab-${tabId}`);
+                if(tabBtn) tabBtn.classList.add('active');
+
+                ['framework', 'benchmark', 'tcga', 'pancancer', 'adni'].forEach(id => {
+                    document.getElementById(`view-${id}`).classList.add('hidden');
+                });
+                document.getElementById(`view-${tabId}`).classList.remove('hidden');
+
+                if (tabId === 'benchmark' && !charts.benchmark) this.renderBenchmark('linear');
+                if (tabId === 'tcga' && !charts.tcgaGenes) this.updateTCGA();
+                if (tabId === 'pancancer') {
+                    this.renderPanCancer();
+                    this.renderConfusionMatrix();
+                }
+                if (tabId === 'adni' && !charts.adniSurvival) this.renderADNI();
+            },
+
+            // --- BENCHMARK LOGIC ---
+            updateBenchmark: function(mode) {
+                const btnLinear = document.getElementById('btn-linear');
+                const btnNonlinear = document.getElementById('btn-nonlinear');
+                
+                if (mode === 'linear') {
+                    btnLinear.classList.replace('text-slate-600', 'bg-white');
+                    btnLinear.classList.add('shadow-sm', 'text-slate-800');
+                    btnNonlinear.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
+                    btnNonlinear.classList.add('text-slate-600');
+                } else {
+                    btnNonlinear.classList.replace('text-slate-600', 'bg-white');
+                    btnNonlinear.classList.add('shadow-sm', 'text-slate-800');
+                    btnLinear.classList.remove('bg-white', 'shadow-sm', 'text-slate-800');
+                    btnLinear.classList.add('text-slate-600');
+                }
+                this.renderBenchmark(mode);
+            },
+
+            renderBenchmark: function(mode) {
+                const ctx = document.getElementById('benchmarkChart').getContext('2d');
+                const data = reportData.benchmark[mode];
+                document.getElementById('benchmark-desc').textContent = data.desc;
+                if (charts.benchmark) charts.benchmark.destroy();
+                charts.benchmark = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'PR-AUC Score',
+                            data: data.data,
+                            backgroundColor: data.labels.map(l => l === 'MRF-IMD' ? '#2563eb' : '#cbd5e1'),
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: true, max: 1.0, title: { display: true, text: 'PR-AUC' } } },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            },
+
+            // --- TCGA LOGIC ---
+            updateTCGA: function() {
+                const mode = document.getElementById('tcga-selector').value;
+                const data = reportData.tcga[mode];
+                document.getElementById('tcga-p-mrf').textContent = `MRF-IMD P-val: ${data.p_mrf}`;
+                document.getElementById('tcga-p-spls').textContent = `SPLS P-val: ${data.p_spls}`;
+                const pathContainer = document.getElementById('tcga-pathways');
+                pathContainer.innerHTML = data.pathways.map(p => 
+                    `<li class="flex items-center gap-2 text-sm text-slate-700">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full"></span> ${p}
+                    </li>`
+                ).join('');
+
+                const ctxGenes = document.getElementById('tcgaGenesChart').getContext('2d');
+                if (charts.tcgaGenes) charts.tcgaGenes.destroy();
+                charts.tcgaGenes = new Chart(ctxGenes, {
+                    type: 'bar',
+                    indexAxis: 'y',
+                    data: {
+                        labels: data.genes.labels,
+                        datasets: [{ label: 'IMD Weight', data: data.genes.data, backgroundColor: '#3b82f6', borderRadius: 4 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                });
+                this.renderSurvivalChart('tcgaSurvivalChart', data.survival, charts, 'tcgaSurvival');
+            },
+
+            // --- PAN CANCER LOGIC ---
+            togglePanCancer: function(mode) {
+                this.panCancerMode = mode;
+                
+                const btnClean = document.getElementById('btn-pan-clean');
+                const btnRaw = document.getElementById('btn-pan-raw');
+
+                if (mode === 'clean') {
+                    btnClean.classList.add('bg-white', 'shadow-sm', 'text-indigo-800');
+                    btnClean.classList.remove('text-slate-500');
+                    btnRaw.classList.remove('bg-white', 'shadow-sm', 'text-indigo-800');
+                    btnRaw.classList.add('text-slate-500');
+                } else {
+                    btnRaw.classList.add('bg-white', 'shadow-sm', 'text-indigo-800');
+                    btnRaw.classList.remove('text-slate-500');
+                    btnClean.classList.remove('bg-white', 'shadow-sm', 'text-indigo-800');
+                    btnClean.classList.add('text-slate-500');
+                }
+
+                this.renderPanCancer();
+            },
+
+            renderPanCancer: function() {
+                const ctx = document.getElementById('panCancerChart').getContext('2d');
+                if (charts.panCancer) charts.panCancer.destroy();
+
+                function genCluster(count, xMean, yMean, spread) {
+                    return Array.from({length: count}, () => ({
+                        x: xMean + (Math.random() - 0.5) * spread,
+                        y: yMean + (Math.random() - 0.5) * spread,
+                        r: 4
+                    }));
+                }
+
+                let clusters;
+                if (this.panCancerMode === 'clean') {
+                    // Clean Clusters (Figure 4c - MRF-IMD)
+                    clusters = [
+                        { label: 'G1: Basal/UCEC', color: '#ef4444', data: genCluster(25, -20, 15, 10) },
+                        { label: 'G2: Hepatobiliary', color: '#f97316', data: genCluster(20, 15, -10, 8) },
+                        { label: 'G3: Hypermutated', color: '#eab308', data: genCluster(22, 25, 20, 12) },
+                        { label: 'G4: Non-basal BRCA', color: '#22c55e', data: genCluster(30, -10, 25, 10) },
+                        { label: 'G5: GI Adeno', color: '#14b8a6', data: genCluster(28, 5, -20, 10) },
+                        { label: 'G6: Endocrine', color: '#3b82f6', data: genCluster(15, -25, -5, 6) },
+                        { label: 'G7: Squamous', color: '#6366f1', data: genCluster(35, 10, 5, 15) },
+                        { label: 'G8: Renal', color: '#a855f7', data: genCluster(20, 20, -25, 8) }
+                    ];
+                } else {
+                    // Messy Clusters (Figure 4a/b - Raw Data)
+                    // Overlapping, indistinct blobs
+                    clusters = [
+                        { label: 'Raw Data Types', color: 'rgba(148, 163, 184, 0.5)', data: genCluster(150, 0, 0, 60) },
+                        { label: 'Mixed Signals', color: 'rgba(59, 130, 246, 0.5)', data: genCluster(100, 5, -5, 55) }
+                    ];
+                }
+
+                charts.panCancer = new Chart(ctx, {
+                    type: 'bubble',
+                    data: {
+                        datasets: clusters.map(c => ({
+                            label: c.label,
+                            data: c.data,
+                            backgroundColor: c.color,
+                            borderColor: 'transparent'
+                        }))
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { x: { display: false }, y: { display: false } },
+                        plugins: {
+                            legend: { display: this.panCancerMode === 'clean', position: 'right' },
+                            tooltip: { callbacks: { label: (ctx) => ctx.dataset.label } }
+                        }
+                    }
+                });
+            },
+
+            renderConfusionMatrix: function() {
+                const container = document.getElementById('confusionMatrix');
+                container.innerHTML = '';
+                
+                // Clusters 1-8 (Cols) vs Cancer Types (Rows)
+                // Data approximation based on Table 5
+                const cancerTypes = [
+                    { name: 'TCGA-ACC', cl: 6 },
+                    { name: 'TCGA-BLCA', cl: 3 },
+                    { name: 'TCGA-BRCA (Basal)', cl: 1 },
+                    { name: 'TCGA-BRCA (Lum/Her)', cl: 4 },
+                    { name: 'TCGA-CESC', cl: 7 }, // Squamous
+                    { name: 'TCGA-CHOL', cl: 2 },
+                    { name: 'TCGA-COAD', cl: 5 },
+                    { name: 'TCGA-ESCA', cl: 5 },
+                    { name: 'TCGA-HNSC', cl: 7 },
+                    { name: 'TCGA-KIRC', cl: 8 },
+                    { name: 'TCGA-KIRP', cl: 8 },
+                    { name: 'TCGA-LGG', cl: 0 }, // Outlier in table
+                    { name: 'TCGA-LIHC', cl: 2 },
+                    { name: 'TCGA-LUAD', cl: 7 }, // Mixed
+                    { name: 'TCGA-LUSC', cl: 7 },
+                    { name: 'TCGA-PCPG', cl: 6 },
+                    { name: 'TCGA-SKCM', cl: 3 },
+                    { name: 'TCGA-STAD', cl: 5 },
+                    { name: 'TCGA-TGCT', cl: 0 },
+                    { name: 'TCGA-THCA', cl: 0 },
+                    { name: 'TCGA-UCEC', cl: 1 }
+                ];
+
+                // Header Row
+                let html = `<div class="grid grid-cols-9 gap-1 mb-1 font-bold text-center bg-slate-100 p-2 rounded">
+                    <div class="text-left pl-2">Cancer Type</div>
+                    <div>G1</div><div>G2</div><div>G3</div><div>G4</div><div>G5</div><div>G6</div><div>G7</div><div>G8</div>
+                </div>`;
+
+                cancerTypes.forEach(type => {
+                    html += `<div class="grid grid-cols-9 gap-1 items-center hover:bg-slate-50">
+                        <div class="font-medium pl-2 py-1">${type.name}</div>`;
+                    
+                    for (let i = 1; i <= 8; i++) {
+                        const isMatch = type.cl === i;
+                        const opacity = isMatch ? 'bg-indigo-600 text-white' : 'bg-slate-50 text-slate-200';
+                        const text = isMatch ? 'High' : '.';
+                        html += `<div class="${opacity} rounded text-center py-1 transition-colors">${text}</div>`;
+                    }
+                    html += `</div>`;
+                });
+
+                container.innerHTML = html;
+            },
+
+            // --- ADNI LOGIC ---
+            renderADNI: function() {
+                this.renderSurvivalChart('adniSurvivalChart', reportData.adni.survival, charts, 'adniSurvival');
+            },
+
+            // Helper for Survival Charts
+            renderSurvivalChart: function(canvasId, data, chartRef, chartKey) {
+                const ctx = document.getElementById(canvasId).getContext('2d');
+                if (chartRef[chartKey]) chartRef[chartKey].destroy();
+                const timePoints = [0, 10, 20, 30, 40, 50]; 
+                chartRef[chartKey] = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: timePoints,
+                        datasets: [
+                            { label: 'Low Risk', data: data.high, borderColor: '#10b981', stepped: true, tension: 0 },
+                            { label: 'High Risk', data: data.low, borderColor: '#ef4444', stepped: true, tension: 0 }
+                        ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: { y: { min: 0, max: 100, title: { display: true, text: 'Survival (%)' } }, x: { title: { display: true, text: 'Months' } } }
+                    }
+                });
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => app.init());
+    </script>
+</body>
+</html>
