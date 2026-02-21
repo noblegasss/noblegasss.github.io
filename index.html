@@ -1,1141 +1,758 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wei Zhang | Academic Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Babel for compiling React/TSX in the browser with crossorigin for better error reporting -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
-    
-    <script>
-      // MathJax Configuration
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        },
-        svg: {
-          fontCache: 'global'
-        },
-        startup: {
-          typeset: false // Prevent auto-typeset on load to avoid race conditions
-        }
-      };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['Playfair Display', 'serif'],
-            },
-            colors: {
-              // Neutral Slate Palette for text
-              academic: {
-                50: '#f8fafc',
-                100: '#f1f5f9',
-                200: '#e2e8f0',
-                300: '#cbd5e1',
-                400: '#94a3b8',
-                500: '#64748b',
-                600: '#475569',
-                700: '#334155',
-                800: '#1e293b',
-                900: '#0f172a',
-              },
-              // Primary Brand: Deep Navy/Indigo
-              brand: {
-                50: '#eff6ff',
-                100: '#dbeafe',
-                200: '#bfdbfe',
-                500: '#3b82f6',
-                600: '#2563eb',
-                700: '#1d4ed8',
-                800: '#1e40af',
-                900: '#1e3a8a', // Sidebar & Headings
-                950: '#172554',
-              },
-              // Accent: Teal/Emerald for freshness
-              accent: {
-                50: '#f0fdfa',
-                100: '#ccfbf1',
-                500: '#14b8a6',
-                600: '#0d9488',
-                700: '#0f766e',
-              }
-            },
-            animation: {
-              'fade-in': 'fadeIn 0.5s ease-out',
-              'fade-in-up': 'fadeInUp 0.8s ease-out',
-            },
-            keyframes: {
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
-              },
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              }
-            }
-          }
-        }
-      }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wei Zhang | Multi-omics & Statistical Learning</title>
+    <meta
+      name="description"
+      content="Wei Zhang — Postdoctoral Associate at the University of Miami. Multi-omics integration, statistical learning, biomarker discovery, and translational biomedical research."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --bg: #f3f7f5;
+        --surface: #ffffff;
+        --surface-soft: #eef4f1;
+        --text: #10231d;
+        --text-soft: #4a635a;
+        --line: #d6e3dd;
+        --brand: #0f766e;
+        --brand-strong: #0b5f58;
+        --accent: #b45309;
+        --shadow: 0 20px 40px -26px rgba(16, 35, 29, 0.35);
+        --radius: 16px;
+        --radius-sm: 12px;
+        --container: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
       body {
-        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
       }
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      .no-scrollbar::-webkit-scrollbar {
+
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 15% 0%, #dcf3ea 0, transparent 34%),
+          radial-gradient(circle at 85% 10%, #ffe9cc 0, transparent 25%),
+          var(--bg);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .container {
+        width: min(var(--container), 100% - 2rem);
+        margin-inline: auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: rgba(243, 247, 245, 0.82);
+        border-bottom: 1px solid rgba(214, 227, 221, 0.85);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 0.65rem;
+        text-decoration: none;
+      }
+
+      .brand-name {
+        font-size: 1.06rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      .brand-tag {
+        font-size: 0.78rem;
+        color: var(--text-soft);
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 1.05rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      nav a {
+        text-decoration: none;
+        font-size: 0.95rem;
+        color: var(--text-soft);
+      }
+
+      nav a:hover,
+      nav a:focus-visible {
+        color: var(--brand-strong);
+      }
+
+      .menu-toggle {
+        display: none;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 0.4rem 0.8rem;
+        font: inherit;
+      }
+
+      .hero {
+        padding: 5rem 0 2.5rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.95fr;
+        gap: 1.5rem;
+      }
+
+      .hero-card,
+      .highlight-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-card {
+        padding: 2rem;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--brand-strong);
+        background: #dcf3ea;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.15;
+      }
+
+      h1 {
+        margin-top: 0.95rem;
+        font-size: clamp(2rem, 3.8vw, 3.2rem);
+        font-family: "Newsreader", serif;
+        font-weight: 600;
+      }
+
+      .hero-subtitle {
+        margin-top: 0.9rem;
+        color: var(--text-soft);
+        font-size: 1.03rem;
+      }
+
+      .hero-bio {
+        margin-top: 1.2rem;
+        max-width: 62ch;
+      }
+
+      .hero-actions {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 999px;
+        padding: 0.65rem 1.05rem;
+        border: 1px solid transparent;
+        transition: 0.2s ease;
+      }
+
+      .btn-primary {
+        background: var(--brand);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: var(--brand-strong);
+      }
+
+      .btn-ghost {
+        border-color: var(--line);
+        background: var(--surface-soft);
+      }
+
+      .btn-ghost:hover {
+        background: #e4eeea;
+      }
+
+      .metrics {
+        margin-top: 1.4rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.7rem;
+      }
+
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: var(--surface-soft);
+        padding: 0.8rem;
+      }
+
+      .metric-value {
+        font-size: 1.32rem;
+        font-weight: 700;
+      }
+
+      .metric-label {
+        font-size: 0.8rem;
+        color: var(--text-soft);
+      }
+
+      .highlight-card {
+        padding: 1.35rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .highlight-card::before {
+        content: "";
+        position: absolute;
+        inset: auto -80px -80px auto;
+        width: 210px;
+        height: 210px;
+        border-radius: 50%;
+        background: linear-gradient(150deg, rgba(15, 118, 110, 0.3), rgba(180, 83, 9, 0.3));
+      }
+
+      .highlight-card h2 {
+        font-size: 1.12rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .focus-list {
+        margin: 0;
+        padding-left: 1.15rem;
+        display: grid;
+        gap: 0.3rem;
+      }
+
+      .focus-list li {
+        color: var(--text-soft);
+      }
+
+      .section {
+        padding: 1rem 0 2rem;
+      }
+
+      .section-header {
+        margin-bottom: 1rem;
+      }
+
+      .section-title {
+        font-family: "Newsreader", serif;
+        font-size: clamp(1.5rem, 2.2vw, 2.05rem);
+      }
+
+      .section-note {
+        margin-top: 0.35rem;
+        color: var(--text-soft);
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .projects {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        border-radius: var(--radius-sm);
+        padding: 1.1rem;
+      }
+
+      .card h3 {
+        font-size: 1.05rem;
+      }
+
+      .card p {
+        margin: 0.6rem 0 0;
+        color: var(--text-soft);
+        font-size: 0.95rem;
+      }
+
+      .pill-row {
+        margin-top: 0.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.42rem;
+      }
+
+      .pill {
+        font-size: 0.74rem;
+        font-weight: 600;
+        color: var(--brand-strong);
+        background: #dcf3ea;
+        border-radius: 999px;
+        padding: 0.25rem 0.55rem;
+      }
+
+      .card-links {
+        margin-top: 0.75rem;
+        display: flex;
+        gap: 0.8rem;
+      }
+
+      .card-links a {
+        color: var(--brand-strong);
+        font-size: 0.9rem;
+      }
+
+      .publications {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .pub {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: var(--surface);
+        padding: 1rem;
+      }
+
+      .pub-title {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .pub-meta {
+        margin-top: 0.35rem;
+        color: var(--text-soft);
+        font-size: 0.9rem;
+      }
+
+      .pub-links {
+        margin-top: 0.55rem;
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .pub-links a {
+        color: var(--brand-strong);
+        font-size: 0.88rem;
+      }
+
+      .two-col {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .timeline {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .timeline li {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        border-radius: var(--radius-sm);
+        padding: 0.9rem;
+      }
+
+      .timeline strong {
+        display: block;
+        font-size: 0.95rem;
+      }
+
+      .timeline span {
+        color: var(--text-soft);
+        font-size: 0.88rem;
+      }
+
+      .contact {
+        padding-bottom: 4rem;
+      }
+
+      .contact-wrap {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: linear-gradient(150deg, #ffffff, #ecf4f0);
+        padding: 1.4rem;
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 1rem;
+      }
+
+      .links a {
+        text-decoration: none;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.45rem 0.8rem;
+        background: #fff;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--text-soft);
+        font-size: 0.87rem;
+        padding: 1rem 0 2rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .projects,
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+
+        nav {
           display: none;
+          position: absolute;
+          top: 72px;
+          left: 0;
+          right: 0;
+          border-bottom: 1px solid var(--line);
+          background: rgba(243, 247, 245, 0.98);
+        }
+
+        nav.open {
+          display: block;
+        }
+
+        nav ul {
+          width: min(var(--container), 100% - 2rem);
+          margin: 0.75rem auto 1rem;
+          flex-direction: column;
+          gap: 0.6rem;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+        }
       }
-      /* Hide scrollbar for IE, Edge and Firefox */
-      .no-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
+
+      @media (max-width: 620px) {
+        .hero {
+          padding-top: 4.2rem;
+        }
+
+        .hero-card,
+        .highlight-card,
+        .contact-wrap {
+          padding: 1.1rem;
+        }
+
+        .metrics {
+          grid-template-columns: 1fr;
+        }
       }
-      ::selection {
-        background-color: #bfdbfe; /* brand-200 */
-        color: #172554; /* brand-950 */
-      }
-      
-      /* MathJax specific adjustments */
-      mjx-container {
-        overflow-x: auto;
-        overflow-y: hidden;
-        max-width: 100%;
-      }
-      /* Markdown Content Styles */
-      .markdown-content h1 { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; color: #1e3a8a; margin-bottom: 1rem; }
-      .markdown-content h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: #1e3a8a; margin-top: 2rem; margin-bottom: 0.75rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.25rem; }
-      .markdown-content h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: #334155; margin-top: 1.5rem; margin-bottom: 0.5rem; }
-      .markdown-content p { margin-bottom: 1.25rem; line-height: 1.8; color: #334155; }
-      .markdown-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
-      .markdown-content ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
-      .markdown-content li { margin-bottom: 0.5rem; color: #334155; }
-      .markdown-content img { border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin: 2rem 0; max-width: 100%; }
-      .markdown-content blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; margin-left: 0; font-style: italic; color: #475569; background: #f8fafc; padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; }
-      .markdown-content code { font-family: monospace; background-color: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #0f172a; }
-      .markdown-content pre { background-color: #1e293b; color: #f8fafc; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5rem; }
-      .markdown-content pre code { background-color: transparent; color: inherit; padding: 0; }
-      .markdown-content a { color: #2563eb; text-decoration: underline; text-underline-offset: 2px; }
-      .markdown-content a:hover { color: #1e40af; }
     </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top">
+          <span class="brand-name">Wei Zhang</span>
+          <span class="brand-tag">Academic Portfolio</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-</head>
-  <body class="bg-academic-50 text-academic-800 font-sans antialiased">
-    <div id="root"></div>
-    
-    <!-- Consolidated Application Logic -->
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react-dom": "https://esm.sh/react-dom@18.3.1?deps=react@18.3.1",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1",
-    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
-    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.3.1",
-    "marked": "https://esm.sh/marked@12.0.0"
-  }
-}
-</script>
-    <script type="text/babel" data-presets="react,typescript" data-type="module">
-      import React, { useState, useEffect } from 'react';
-      import ReactDOM from 'react-dom/client';
-      import { marked } from 'marked';
-      import { 
-        Github, Mail, ExternalLink, 
-        MapPin, Menu, X, Code, Briefcase, GraduationCap, Award, Book, User, Globe, Download, ArrowLeft, BookOpen
-      } from 'lucide-react';
-
-      // --- TYPES (Documentation only) ---
-      interface Author {
-        name: string;
-        isMe?: boolean;
-      }
-
-      interface Publication {
-        id: string;
-        title: string;
-        authors: Author[];
-        venue: string;
-        year: number;
-        abstract?: string;
-        tags: string[];
-        links: {
-          pdf?: string;
-          code?: string;
-          website?: string;
-          slides?: string;
-          doi?: string;
-        };
-        imageUrl?: string;
-        status?: string; 
-        type?: 'Journal' | 'Conference' | 'Preprint' | 'Thesis';
-      }
-
-      interface ResearchProject {
-        id: string;
-        title: string;
-        description: string;
-        longDescription?: string;
-        details?: string[];
-        imageUrl?: string;
-        tools: string[];
-        status: 'Ongoing' | 'Completed';
-        github?: string;
-        contentUrl?: string; 
-      }
-
-      interface Experience {
-        id: string;
-        role: string;
-        company: string;
-        location: string;
-        period: string;
-        description: string[];
-        type: 'Research' | 'Teaching';
-      }
-
-      interface Education {
-        id: string;
-        degree: string;
-        institution: string;
-        location: string;
-        year: string;
-        advisor?: string;
-        details?: string;
-      }
-
-      interface AwardItem {
-        id: string;
-        title: string;
-        organization: string;
-        date: string;
-      }
-
-      interface Service {
-        role: string;
-        organization: string;
-      }
-
-      interface NewsItem {
-        id: string;
-        date: string;
-        content: string;
-        link?: string;
-      }
-
-      // --- CONSTANTS ---
-      
-      const SectionId = {
-        INTRO: 'intro',
-        RESEARCH: 'research',
-        PUBLICATIONS: 'publications',
-        CV: 'cv'
-      };
-      
-      const PROFILE = {
-        name: "Wei Zhang",
-        title: "Postdoctoral Associate",
-        affiliation: "University of Miami",
-        email: "wei.zhang60@med.miami.edu",
-        phone: "+1-786-630-2400",
-        location: "Miami, FL",
-        github: "https://github.com/noblegasss",
-        researchGate: "https://www.researchgate.net/profile/Wei-Zhang-980?ev=hdr_xprf", 
-        scholar: "https://scholar.google.com/citations?hl=en&user=BRtsZUAAAAAJ&view_op=list_works", 
-        linkedin: "https://linkedin.com/in/nova-weizhang",
-        bio: `I am a Postdoctoral Associate at the University of Miami, specializing in **Multi-omics Integration** and **Statistical Learning** for biomedical research.
-        
-        My research focuses on developing advanced computational methods to identify biomarkers and therapeutic targets for neurodegenerative diseases and cancers. I integrate genomic, transcriptomic, and epigenetic data to build robust predictive models and uncover biological insights.`,
-        interests: [
-          "Multi-omics Integration", "Statistical Learning", "Random Forests", 
-          "Variable Selection", "Meta-analysis", "Biomarker Detection", "Subtype Clustering",
-          "Statistical Genomics", "Epigenetics", "Neurodegenerative Disease", "Cancers"
-        ]
-      };
-
-      const NEWS = [
-        {
-          id: "n1",
-          date: "Oct 2025",
-          content: "Submitted NIH K99/R00, BrightFocus Fellowship, and Alzheimer’s Association AARFA proposals."
-        },
-        {
-          id: "n2",
-          date: "May 2025",
-          content: "Presented at STATGEN 2025 in Minneapolis, MN."
-        },
-        {
-          id: "n3",
-          date: "Sep 2024",
-          content: "Started as a Postdoctoral Associate at the University of Miami."
-        },
-        {
-          id: "n4",
-          date: "Aug 2024",
-          content: "Successfully defended my Ph.D. Dissertation and received the Award of Academic Merit."
-        }
-      ];
-
-      const EDUCATION = [
-        {
-          id: "edu1",
-          degree: "Ph.D. in Biostatistics",
-          institution: "University of Miami",
-          location: "Miami, FL",
-          year: "Aug 2024",
-          advisor: "Chen, X. Steven, Ph.D.",
-          details: "Dissertation: Integrative Multi-Omics Analysis Using Multivariate Random Forest"
-        },
-        {
-          id: "edu2",
-          degree: "M.S. in Statistics",
-          institution: "The George Washington University",
-          location: "Washington, DC",
-          year: "May 2019"
-        },
-        {
-          id: "edu3",
-          degree: "B.S. in Economics Analysis & Actuarial Math",
-          institution: "State University of New York at Binghamton",
-          location: "Binghamton, NY",
-          year: "May 2017"
-        }
-      ];
-
-      const PROJECTS = [
-        {
-          id: "p1",
-          title: "Multivariate Random Forest Framework for Multi-omics Data Integration",
-          description: "A random forest-based method for integrating multi-omics datasets to improve predictive accuracy and uncover biomarkers.",
-          tools: ["R", "Random Forest", "Method Development"],
-          status: "Ongoing",
-          github: "https://github.com/noblegasss/multiRF-variable-selection",
-          contentUrl: "research/mrf1.html"
-        },
-        {
-          id: "p3",
-          title: "Epigenetic Biomarkers for Alzheimer’s and Cognitive Health",
-          description: "Identification and validation of blood-based DNA methylation signatures predictive of incident dementia in longitudinal cohorts.",
-          tools: ["R", "Statistical Modeling", "Longitudinal Analysis"],
-          status: "Completed",
-          contentUrl: "research/p3.html"
-        },
-        {
-          id: "p4",
-          title: "Prediction Models for Cancer Biomarkers",
-          description: "Transcriptome-based prediction models for chemotherapy response using matched colorectal tumor-organoid gene expression data.",
-          tools: ["R", "WGCNA", "Meta-analysis"],
-          status: "Completed"
-        }
-      ];
-
-      const PUBLICATIONS = [
-        {
-          id: "s1",
-          title: "The Aging Epigenome: Integrative Analyses Reveal Functional Overlap with Alzheimers Disease",
-          authors: [
-            { name: "Zhang W", isMe: true },
-            { name: "Lukacsovich D" },
-            { name: "Young JI" },
-            { name: "Gomez L" },
-            { name: "Schmidt MA" },
-            { name: "Kunkle B" },
-            { name: "Chen XS" },
-            { name: "Martin ER" },
-            { name: "Wang L*" }
-          ],
-          venue: "Prepare for submission",
-          year: 2025,
-          status: "In Submission",
-          type: "Preprint",
-          tags: ["Epigenetics", "Aging"],
-          links: { doi: "https://doi.org/10.1101/2025.06.08.25329218" }
-        },
-        {
-          id: "j1",
-          title: "DNA Methylation Signature of a Lifestyle-based Resilience Index for Cognitive Health",
-          authors: [
-            { name: "Zhang W", isMe: true },
-            { name: "Lukacsovich D" },
-            { name: "Young JI" },
-            { name: "Gomez L" },
-            { name: "Schmidt MA" },
-            { name: "Martin ER" },
-            { name: "Kunkle B" },
-            { name: "Chen XS" },
-            { name: "O'Shea DM*"},
-            { name: "Galvin JE*"},
-            { name: "Wang L*" }
-          ],
-          venue: "Alzheimer’s Research & Therapy",
-          year: 2025,
-          status: "Published",
-          type: "Journal",
-          tags: ["DNA Methylation", "Cognitive Health"],
-          links: { doi: "https://doi.org/10.1186/s13195-025-01733-7" }
-        },
-        {
-          id: "j2",
-          title: "Blood DNA methylation signature for incident dementia: Evidence from longitudinal cohorts",
-          authors: [
-            { name: "Zhang W", isMe: true },
-            { name: "Young JI" },
-            { name: "Gomez L" },
-            { name: "Schmidt MA" },
-            { name: "Lukacsovich D" },
-            { name: "Kunkle B" },
-            { name: "Chen XS" },
-            { name: "Martin ER" },
-            { name: "Wang L*" }
-          ],
-          venue: "Alzheimer’s & Dementia",
-          year: 2025,
-          status: "Published",
-          type: "Journal",
-          tags: ["Dementia", "Biomarkers"],
-          links: { doi: "https://doi.org/10.1002/alz.14496" }
-        },
-        {
-          id: "j3",
-          title: "Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis",
-          authors: [
-            { name: "Zhang W", isMe: true },
-            { name: "Wu C" },
-            { name: "Huang H" },
-            { name: "Bleu P" },
-            { name: "Zambare W"},
-            { name: "Alvarez J"},
-            { name: "Wang L"},
-            { name: "Paty PB"},
-            { name: "Romesser PB"},
-            { name: "Smith JJ*"},
-            { name: "Chen XS*"}
-          ],
-          venue: "Translational Oncology",
-          year: 2025,
-          status: "Published",
-          type: "Journal",
-          tags: ["Oncology", "Gene Expression"],
-          links: { doi: "https://doi.org/10.1016/j.tranon.2024.102238" }
-        },
-        {
-          id: "s2",
-          title: "An Integrative Multi-Omics Random Forest Framework for Robust Biomarker Discovery",
-          authors: [
-            { name: "Zhang W*", isMe: true },
-            { name: "Huang H" },
-            { name: "Wang L" },
-            { name: "Lehmann BD" },
-            { name: "Chen XS*" }
-          ],
-          venue: "GigaScience (Accepted, in prepare)",
-          year: 2025,
-          status: "Preprint",
-          type: "Preprint",
-          tags: ["Multi-omics", "Machine Learning"],
-          links: { pdf: "https://www.biorxiv.org/content/10.1101/2025.03.05.641533v2.full.pdf" }
-        },
-        {
-          id: "j4",
-          title: "Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC v1.0 BeadChip microarrays",
-          authors: [
-            { name: "Zhang W", isMe: true },
-            { name: "Young JI" },
-            { name: "Gomez L" },
-            { name: "Schmidt MA" },
-            { name: "Lukacsovich D" },
-            { name: "Kunkle B" },
-            { name: "Chen XS" },
-            { name: "Martin ER" },
-            { name: "Wang L*" }
-          ],
-          venue: "Epigenetics",
-          year: 2024,
-          status: "Published",
-          type: "Journal",
-          tags: ["Epigenetics", "Methodology"],
-          links: { doi: "https://doi.org/10.1080/15592294.2024.2333660" }
-        },
-        {
-          id: "j6",
-          title: "Distinct CSF biomarker-associated DNA methylation in Alzheimer’s disease and cognitively normal subjects",
-          authors: [
-            { name: "Zhang W", isMe: true },
-            { name: "Young JI" },
-            { name: "Gomez L" },
-            { name: "Schmidt MA" },
-            { name: "Lukacsovich D" },
-            { name: "Varma A"},
-            { name: "Chen XS" },
-            { name: "Martin ER" },
-            { name: "Wang L*" }
-          ],
-          venue: "Alzheimer’s Research & Therapy",
-          year: 2023,
-          status: "Published",
-          type: "Journal",
-          tags: ["Alzheimer's", "CSF Biomarkers"],
-          links: { doi: "https://doi.org/10.1186/s13195-023-01216-7" }
-        },
-        {
-          id: "j7",
-          title: "Transcriptome meta-analysis of triple-negative breast cancer response to neoadjuvant chemotherapy",
-          authors: [
-            { name: "Zhang W", isMe: true },
-            { name: "Li E" },
-            { name: "Wang L" },
-            { name: "Lehmann BD" },
-            { name: "Chen XS*" }
-          ],
-          venue: "Cancers",
-          year: 2023,
-          status: "Published",
-          type: "Journal",
-          tags: ["Breast Cancer", "Meta-analysis"],
-          links: { doi: "10.3390/cancers15082194" }
-        }
-      ];
-
-      const EXPERIENCES = [
-        {
-          id: "exp1",
-          role: "Postdoctoral Associate",
-          company: "University of Miami",
-          location: "Miami, FL",
-          period: "Sep 2024 - Present",
-          type: "Research",
-          description: []
-        },
-        {
-          id: "exp2",
-          role: "Graduate Research Assistant",
-          company: "University of Miami",
-          location: "Miami, FL",
-          period: "May 2022 - Aug 2024",
-          type: "Research",
-          description: []
-        },
-        {
-          id: "teach1",
-          role: "Teaching Assistant (EPH705)",
-          company: "University of Miami",
-          location: "Miami, FL",
-          period: "2022 - 2024",
-          type: "Teaching",
-          description: []
-        },
-        {
-          id: "teach2",
-          role: "Teaching Assistant (STAT6201)",
-          company: "The George Washington University",
-          location: "Washington, DC",
-          period: "2018",
-          type: "Teaching",
-          description: []
-        }
-      ];
-
-      const SKILLS = {
-        programming: ["R/RStudio (Proficient)", "Python (Proficient)", "SAS (Comprehensive)", "Linux"],
-        expertise: ["Package Building", "Data Analysis", "Visualization", "Statistical Modeling", "Machine Learning"]
-      };
-
-      const AWARDS = [
-        {
-          id: "a1",
-          title: "Award of Academic Merit",
-          organization: "University of Miami",
-          date: "Aug 2024"
-        },
-        {
-          id: "a2",
-          title: "Student Competition Award (Best Student Poster)",
-          organization: "ASA Florida Chapter Meeting",
-          date: "March 2023"
-        },
-        {
-          id: "a3",
-          title: "Travel Award",
-          organization: "University of Miami",
-          date: "Mar 2023"
-        }
-      ];
-
-      const SERVICE = [
-        { role: "Manuscript Reviewer", organization: "Nature Communication" },
-        { role: "Manuscript Reviewer", organization: "Scientific Reports" },
-        { role: "Manuscript Reviewer", organization: "Discover Applied Sciences" },
-        { role: "Manuscript Reviewer", organization: "Biology Direct" },
-        { role: "Manuscript Reviewer", organization: "Discover Oncology" },
-        { role: "Manuscript Reviewer", organization: "Medicine in Omics" },
-        { role: "Member", organization: "International Biometric Society (ENAR)" },
-        { role: "Member", organization: "American Statistical Association (ASA)" },
-        { role: "Member", organization: "International Society to Advance Alzheimer’s Research and Treatment (ISTAART)" },
-      ];
-
-      // --- COMPONENT ---
-      const App = () => {
-        const [activeSection, setActiveSection] = useState(SectionId.INTRO);
-        const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-        const [selectedProject, setSelectedProject] = useState(null);
-        const [projectContent, setProjectContent] = useState('');
-        const [isLoadingContent, setIsLoadingContent] = useState(false);
-
-        // Scroll Spy Logic
-        useEffect(() => {
-          const handleScroll = () => {
-            const sections = Object.values(SectionId);
-            const scrollPosition = window.scrollY + 150; 
-
-            for (const section of sections) {
-              const element = document.getElementById(section);
-              if (element) {
-                const top = element.offsetTop;
-                const height = element.offsetHeight;
-                
-                if (scrollPosition >= top && scrollPosition < top + height) {
-                  setActiveSection(section);
-                  break;
-                }
-              }
-            }
-          };
-          window.addEventListener('scroll', handleScroll);
-          return () => window.removeEventListener('scroll', handleScroll);
-        }, []);
-
-        useEffect(() => {
-          if (!selectedProject) {
-            setProjectContent("");
-            return;
-          }
-        
-          // We only ever open the modal for projects WITHOUT contentUrl now
-          setProjectContent(
-            `<p>${selectedProject.longDescription || selectedProject.description}</p>`
-          );
-        }, [selectedProject]);
-
-
-
-        // Lock body scroll and trigger MathJax safely
-        useEffect(() => {
-          if (selectedProject) {
-            document.body.style.overflow = 'hidden';
-            if (!isLoadingContent) {
-              setTimeout(() => {
-                // Safeguard against missing MathJax or its functions
-                if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
-                    window.MathJax.typesetPromise();
-                } else if (window.MathJax && typeof window.MathJax.typeset === 'function') {
-                    window.MathJax.typeset();
-                }
-              }, 100);
-            }
-          } else {
-            document.body.style.overflow = 'unset';
-          }
-        }, [selectedProject, isLoadingContent]);
-
-        const scrollTo = (id) => {
-          const element = document.getElementById(id);
-          if (element) {
-            const offset = window.innerWidth < 1024 ? 80 : 0;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-        
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-            });
-            setMobileMenuOpen(false);
-          }
-        };
-
-        const NavLink = ({ id, label }) => (
-          <button
-            onClick={() => scrollTo(id)}
-            className={`group flex items-center gap-3 text-sm font-medium transition-all duration-300 w-full text-left ${
-              activeSection === id 
-                ? 'text-white translate-x-2' 
-                : 'text-brand-200 hover:text-white hover:translate-x-1'
-            }`}
-          >
-            <span className={`h-px bg-white transition-all duration-300 ${activeSection === id ? 'w-8' : 'w-0 group-hover:w-4'}`}></span>
-            {label}
-          </button>
-        );
-
-        const renderFormattedText = (text) => {
-          if (!text) return null;
-          const parts = text.split(/(\*\*.*?\*\*)/g);
-          return parts.map((part, index) => {
-            if (part.startsWith('**') && part.endsWith('**')) {
-              return <strong key={index} className="font-bold text-brand-900">{part.slice(2, -2)}</strong>;
-            }
-            const italicParts = part.split(/(\*.*?\*)/g);
-            return (
-              <span key={index}>
-                {italicParts.map((subPart, subIndex) => {
-                  if (subPart.startsWith('*') && subPart.endsWith('*') && subPart.length > 2) {
-                    return <em key={subIndex} className="italic text-academic-800">{subPart.slice(1, -1)}</em>;
-                  }
-                  return subPart;
-                })}
-              </span>
-            );
-          });
-        };
-
-        return (
-          <div className="min-h-screen bg-academic-50 flex flex-col lg:flex-row selection:bg-brand-200 selection:text-brand-950 font-sans">
-            
-            {/* Sidebar Navigation (Desktop) */}
-            <aside className="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-brand-900 border-r border-brand-800 px-8 py-12 justify-between text-white shadow-xl z-20 shrink-0">
-              <div className="space-y-10">
-                <div className="space-y-4">
-                  <div className="w-20 h-20 rounded-full bg-white text-brand-900 flex items-center justify-center text-2xl font-serif font-bold border-4 border-brand-700 shadow-lg">
-                    WZ
-                  </div>
-                  <div>
-                    <h1 className="font-serif text-2xl font-bold text-white tracking-tight">{PROFILE.name}</h1>
-                    <p className="text-brand-200 text-xs mt-2 font-medium leading-relaxed">{PROFILE.title}</p>
-                    <p className="text-brand-300 text-xs">{PROFILE.affiliation}</p>
-                  </div>
-                </div>
-
-                <nav className="flex flex-col space-y-4 items-start">
-                  <NavLink id={SectionId.INTRO} label="Intro" />
-                  <NavLink id={SectionId.RESEARCH} label="Research" />
-                  <NavLink id={SectionId.PUBLICATIONS} label="Publications" />
-                  <NavLink id={SectionId.CV} label="CV" />
-                </nav>
-              </div>
-
-              <div className="space-y-4">
-                  <div className="flex gap-4">
-                    <a href={PROFILE.github} target="_blank" rel="noreferrer" className="text-brand-300 hover:text-white transition-colors" title="GitHub"><Github size={18} /></a>
-                    <a href={PROFILE.scholar} target="_blank" rel="noreferrer" className="text-brand-300 hover:text-white transition-colors" title="Google Scholar"><GraduationCap size={18} /></a>
-                    <a href={`mailto:${PROFILE.email}`} className="text-brand-300 hover:text-white transition-colors" title="Email"><Mail size={18} /></a>
-                    <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="text-brand-300 hover:text-white transition-colors" title="LinkedIn"><ExternalLink size={18} /></a>
-                  </div>
-              </div>
-            </aside>
-
-            {/* Mobile Header */}
-            <div className="lg:hidden sticky top-0 z-40 bg-brand-900 text-white border-b border-brand-800 px-6 py-4 flex justify-between items-center shadow-lg">
-              <span className="font-serif font-bold text-xl">{PROFILE.name}</span>
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-brand-200 p-1">
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid reveal">
+          <article class="hero-card">
+            <span class="eyebrow">University of Miami</span>
+            <h1>Multi-omics Integration and Statistical Learning for Precision Biomedicine</h1>
+            <p class="hero-subtitle">Postdoctoral Associate, Department of Public Health Sciences</p>
+            <p class="hero-bio">
+              I develop computational and statistical methods for biomarker discovery across neurodegenerative disease and cancer.
+              My work integrates genomic, transcriptomic, and epigenetic data to improve prediction quality and biological interpretability.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://scholar.google.com/citations?hl=en&user=BRtsZUAAAAAJ&view_op=list_works" target="_blank" rel="noreferrer">Google Scholar</a>
+              <a class="btn btn-ghost" href="mailto:wei.zhang60@med.miami.edu">Email</a>
+              <a class="btn btn-ghost" href="https://github.com/noblegasss" target="_blank" rel="noreferrer">GitHub</a>
             </div>
-
-            {/* Mobile Menu */}
-            {mobileMenuOpen && (
-              <div className="lg:hidden fixed inset-0 z-30 bg-brand-900 pt-24 px-8 flex flex-col space-y-6 animate-fade-in text-white overflow-y-auto pb-10">
-                {Object.values(SectionId).map((id) => (
-                  <button key={id} onClick={() => scrollTo(id)} className="text-2xl font-serif text-brand-100 hover:text-white text-left capitalize border-b border-brand-800 pb-2">
-                    {id}
-                  </button>
-                ))}
+            <div class="metrics">
+              <div class="metric">
+                <div class="metric-value">7+</div>
+                <div class="metric-label">Peer-reviewed papers</div>
               </div>
-            )}
-
-            {/* Main Content */}
-            <main className="flex-1 w-full max-w-7xl mx-auto px-6 py-12 lg:px-12 lg:py-16 space-y-24">
-              
-              {/* Intro Section */}
-              <section id={SectionId.INTRO} className="space-y-12 animate-fade-in-up">
-                <div className="space-y-6 max-w-3xl">
-                  <h2 className="font-serif text-4xl lg:text-5xl font-bold text-brand-900 leading-tight">
-                    Integrating <span className="text-accent-600">multi-omics</span> to decode complex diseases.
-                  </h2>
-                  <div className="prose prose-lg text-academic-600 leading-relaxed font-light">
-                    <p className="whitespace-pre-line">{renderFormattedText(PROFILE.bio)}</p>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {PROFILE.interests.map(interest => (
-                      <span key={interest} className="px-3 py-1 bg-white border border-brand-100 text-brand-700 rounded-full text-xs font-bold tracking-wide hover:border-brand-300 transition-colors cursor-default shadow-sm">
-                        {interest}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-academic-600 text-sm pt-4 border-t border-academic-200 mt-6">
-                    <div className="flex items-center gap-2">
-                      <MapPin size={16} className="text-accent-600"/>
-                      <span>{PROFILE.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Mail size={16} className="text-accent-600"/>
-                      <a href={`mailto:${PROFILE.email}`} className="hover:text-brand-600 transition-colors">{PROFILE.email}</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white border border-brand-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 className="text-sm font-bold text-brand-600 uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <Globe size={16} /> Recent News
-                  </h3>
-                  <div className="space-y-4">
-                    {NEWS.map((item) => (
-                      <div key={item.id} className="flex flex-col sm:flex-row sm:gap-6 sm:items-baseline">
-                        <span className="text-xs font-bold text-academic-400 w-24 shrink-0 uppercase">{item.date}</span>
-                        <div className="text-sm text-academic-800 font-medium">{renderFormattedText(item.content)}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
-              {/* Research Section - Grid of Squares */}
-              <section id={SectionId.RESEARCH} className="space-y-10">
-                <div className="flex items-center gap-4 mb-8 border-b border-brand-100 pb-4">
-                    <Code size={32} className="text-brand-900" />
-                    <h3 className="font-serif text-3xl font-bold text-brand-900">Research</h3>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {PROJECTS.map(project => (
-                    <div 
-                        key={project.id} 
-                        onClick={() => {
-                          if (project.contentUrl) {
-                            // Always open the file/URL directly (md, html, pdf, external link, etc.)
-                            window.open(project.contentUrl, "_blank", "noopener,noreferrer");
-                            return; // do NOT open the modal
-                          }
-                          // Only use the modal if there is no contentUrl
-                          setSelectedProject(project);
-                        }}
-
-                        className="group relative bg-white border border-brand-100 rounded-xl p-8 shadow-sm hover:shadow-xl hover:border-brand-300 transition-all duration-300 cursor-pointer flex flex-col justify-between h-[360px] overflow-hidden"
-                    >
-                      {/* Decorative Background Element */}
-                      <div className="absolute -right-10 -top-10 w-32 h-32 bg-brand-50 rounded-full transition-transform group-hover:scale-150 duration-700 ease-out z-0"></div>
-
-                      <div className="relative z-10 flex flex-col gap-4 h-full">
-                          <div className="flex justify-between items-start">
-                              <span className={`text-[10px] uppercase font-bold px-2.5 py-1 rounded-full border ${
-                                project.status === 'Ongoing' 
-                                ? 'bg-accent-50 text-accent-700 border-accent-100' 
-                                : 'bg-gray-50 text-gray-600 border-gray-100'
-                              }`}>
-                                {project.status}
-                              </span>
-                              <ExternalLink size={20} className="text-brand-300 group-hover:text-brand-600 transition-colors" />
-                          </div>
-                          
-                          <h4 className="text-2xl font-bold text-brand-900 font-serif leading-tight group-hover:text-brand-700 transition-colors line-clamp-3">
-                            {project.title}
-                          </h4>
-                          
-                          <p className="text-academic-600 text-sm leading-relaxed line-clamp-3">
-                            {project.description}
-                          </p>
-
-                          <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                              {project.tools.slice(0, 3).map(tool => (
-                                <span key={tool} className="text-[10px] font-bold uppercase text-brand-600 bg-white/80 backdrop-blur-sm px-2 py-1 rounded border border-brand-100">
-                                  {tool}
-                                </span>
-                              ))}
-                              {project.tools.length > 3 && (
-                                  <span className="text-[10px] font-bold uppercase text-brand-400 px-1 py-1">
-                                    +{project.tools.length - 3}
-                                  </span>
-                              )}
-                          </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Publications Section */}
-              <section id={SectionId.PUBLICATIONS} className="space-y-10">
-                <div className="flex items-center gap-4 mb-8 border-b border-brand-100 pb-4">
-                    <Book size={32} className="text-brand-900" />
-                    <h3 className="font-serif text-3xl font-bold text-brand-900">Selected Publications</h3>
-                </div>
-
-                <div className="space-y-8">
-                  {PUBLICATIONS.map(pub => (
-                    <div key={pub.id} className="group flex flex-col sm:flex-row gap-4 sm:gap-6 p-6 bg-white border border-brand-100 rounded-xl shadow-sm hover:shadow-md transition-all">
-                      <div className="sm:w-32 shrink-0 pt-1 flex flex-col gap-1">
-                          <span className="text-xl font-bold text-brand-900">{pub.year}</span>
-                          <span className={`text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded w-fit ${
-                            pub.type === 'Journal' ? 'bg-brand-50 text-brand-700' :
-                            pub.type === 'Conference' ? 'bg-accent-50 text-accent-700' :
-                            'bg-gray-100 text-gray-700'
-                          }`}>{pub.type}</span>
-                      </div>
-                      
-                      <div className="space-y-2 flex-1">
-                        <h4 className="text-lg font-bold text-academic-800 font-serif leading-snug">
-                          {pub.title}
-                        </h4>
-                        <p className="text-sm text-academic-600 leading-relaxed">
-                          {pub.authors.map((author, idx) => (
-                            <span key={idx} className={author.isMe ? "font-bold text-brand-900 underline decoration-accent-400 decoration-2 underline-offset-2" : ""}>
-                              {author.name}{idx < pub.authors.length - 1 ? ", " : ""}
-                            </span>
-                          ))}
-                        </p>
-                        <div className="flex items-center gap-2 text-sm italic text-academic-500 font-medium">
-                          <span>{pub.venue}</span>
-                          {pub.status && <span className="not-italic text-xs bg-gray-100 px-2 py-0.5 rounded text-gray-600 border border-gray-200">{pub.status}</span>}
-                        </div>
-                        
-                        <div className="flex gap-2 mt-2 pt-2">
-                            {pub.links.pdf && <a href={pub.links.pdf} className="text-xs font-bold text-brand-600 hover:text-brand-800 hover:underline">PDF</a>}
-                            {pub.links.doi && <a href={pub.links.doi} className="text-xs font-bold text-brand-600 hover:text-brand-800 hover:underline">DOI</a>}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* CV Section */}
-              <section id={SectionId.CV} className="space-y-16 pb-20">
-                <div className="flex items-center justify-between mb-8 border-b border-brand-100 pb-4">
-                    <div className="flex items-center gap-4">
-                      <User size={32} className="text-brand-900" />
-                      <h3 className="font-serif text-3xl font-bold text-brand-900">Curriculum Vitae</h3>
-                    </div>
-                    <a 
-                      href="/content/WZ_CV250908.pdf" 
-                      download
-                      className="flex items-center gap-2 px-6 py-2.5 bg-brand-600 text-white rounded-lg text-sm font-bold hover:bg-brand-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-                    >
-                      <Download size={18} />
-                      <span>Download CV</span>
-                    </a>
-                </div>
-
-                {/* Experience */}
-                <div className="space-y-8">
-                  <h4 className="text-xl font-bold text-brand-800 flex items-center gap-2">
-                    <Briefcase size={20} className="text-accent-600"/> Experience
-                  </h4>
-                  <div className="relative border-l-2 border-brand-100 ml-3 space-y-10 py-2">
-                    {EXPERIENCES.filter(e => e.type === 'Research').map((exp) => (
-                      <div key={exp.id} className="relative pl-8 md:pl-10 group">
-                        <div className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-white border-[3px] border-brand-300 group-hover:border-accent-500 transition-colors shadow-sm"></div>
-                        <div className="grid md:grid-cols-[1fr_3fr] gap-2 md:gap-8">
-                          <span className="text-xs font-bold text-academic-500 uppercase tracking-wide mt-1">{exp.period}</span>
-                          <div className="space-y-2">
-                            <h5 className="text-lg font-bold text-brand-900">{exp.role}</h5>
-                            <p className="text-academic-700 font-medium text-sm">{exp.company} &bull; {exp.location}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Education */}
-                <div className="space-y-8">
-                  <h4 className="text-xl font-bold text-brand-800 flex items-center gap-2">
-                    <GraduationCap size={20} className="text-accent-600"/> Education
-                  </h4>
-                  <div className="grid gap-6">
-                      {EDUCATION.map((edu) => (
-                        <div key={edu.id} className="bg-white p-6 rounded-xl border border-brand-100 flex flex-col md:flex-row md:items-start justify-between gap-4 shadow-sm hover:shadow-md transition-shadow">
-                          <div>
-                            <h5 className="text-lg font-bold text-brand-900">{edu.degree}</h5>
-                            <p className="text-academic-700">{edu.institution}</p>
-                            {edu.advisor && <p className="text-sm text-academic-500 mt-1 italic">Advisor: {edu.advisor}</p>}
-                            {edu.details && <p className="text-sm text-academic-600 mt-1">{edu.details}</p>}
-                          </div>
-                          <div className="text-right shrink-0">
-                            <span className="block text-sm font-bold text-brand-600">{edu.year}</span>
-                            <span className="block text-xs text-academic-400 uppercase">{edu.location}</span>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-
-                {/* Skills & Awards Grid */}
-                <div className="grid md:grid-cols-2 gap-12">
-                    <div className="space-y-6">
-                      <h4 className="text-xl font-bold text-brand-800 flex items-center gap-2">
-                        <Award size={20} className="text-accent-600"/> Honors & Awards
-                      </h4>
-                      <ul className="space-y-4">
-                        {AWARDS.map(award => (
-                          <li key={award.id} className="flex justify-between items-start border-b border-academic-100 pb-3 last:border-0">
-                            <div>
-                              <span className="block font-bold text-academic-800 text-sm">{award.title}</span>
-                              <span className="text-xs text-academic-500 italic">{award.organization}</span>
-                            </div>
-                            <span className="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">{award.date}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="space-y-6">
-                      <h4 className="text-xl font-bold text-brand-800 flex items-center gap-2">
-                        <Code size={20} className="text-accent-600"/> Skills
-                      </h4>
-                      <div className="bg-white p-6 rounded-xl border border-brand-100 space-y-4 shadow-sm">
-                        <div>
-                            <span className="text-xs font-bold text-academic-400 uppercase tracking-widest block mb-2">Programming</span>
-                            <div className="flex flex-wrap gap-2">
-                              {SKILLS.programming.map(s => (
-                                <span key={s} className="px-2 py-1 bg-academic-50 text-academic-700 rounded text-xs font-medium border border-academic-200">{s}</span>
-                              ))}
-                            </div>
-                        </div>
-                        <div>
-                            <span className="text-xs font-bold text-academic-400 uppercase tracking-widest block mb-2">Expertise</span>
-                            <div className="flex flex-wrap gap-2">
-                              {SKILLS.expertise.map(s => (
-                                <span key={s} className="px-2 py-1 bg-academic-50 text-academic-700 rounded text-xs font-medium border border-academic-200">{s}</span>
-                              ))}
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                
-                {/* Service */}
-                <div className="space-y-6">
-                    <h4 className="text-xl font-bold text-brand-800 flex items-center gap-2">
-                        <User size={20} className="text-accent-600"/> Professional Service
-                    </h4>
-                    
-                    <div className="grid md:grid-cols-2 gap-6">
-                      {/* Manuscript Peer Review */}
-                      <div className="bg-white p-6 rounded-xl border border-brand-100 shadow-sm flex flex-col">
-                          <h5 className="font-bold text-brand-900 mb-4 border-b border-brand-50 pb-2 flex items-center gap-2">
-                            <BookOpen size={18} className="text-accent-600" />
-                            Manuscript Peer Review
-                          </h5>
-                          <ul className="space-y-3 flex-1">
-                            {SERVICE.filter(s => s.role === 'Manuscript Reviewer').map((s, i) => (
-                                <li key={i} className="text-sm text-academic-700 flex items-start gap-2">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-brand-400 mt-1.5 shrink-0"></span>
-                                  <span className="italic">{s.organization}</span>
-                                </li>
-                            ))}
-                          </ul>
-                      </div>
-
-                      {/* Memberships */}
-                      <div className="bg-white p-6 rounded-xl border border-brand-100 shadow-sm flex flex-col">
-                          <h5 className="font-bold text-brand-900 mb-4 border-b border-brand-50 pb-2 flex items-center gap-2">
-                            <User size={18} className="text-accent-600" />
-                            Memberships
-                          </h5>
-                          <ul className="space-y-3 flex-1">
-                            {SERVICE.filter(s => s.role === 'Member').map((s, i) => (
-                                <li key={i} className="text-sm text-academic-700 flex items-start gap-2">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-brand-400 mt-1.5 shrink-0"></span>
-                                  <span>{s.organization}</span>
-                                </li>
-                            ))}
-                          </ul>
-                      </div>
-                    </div>
-                </div>
-
-              </section>
-
-            </main>
-
-            {/* Full Screen Research Project Modal ("New Page") */}
-            {selectedProject && (
-              <div className="fixed inset-0 z-50 bg-academic-50 overflow-y-auto animate-fade-in flex flex-col">
-                {/* Header */}
-                <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-brand-100 px-6 py-4 flex items-center justify-between z-10">
-                  <button 
-                    onClick={() => setSelectedProject(null)}
-                    className="flex items-center gap-2 text-brand-600 font-bold hover:text-brand-800 transition-colors px-3 py-1.5 rounded-lg hover:bg-brand-50"
-                  >
-                    <ArrowLeft size={20} />
-                    <span>Back to Research</span>
-                  </button>
-                  <span className="text-sm font-serif font-bold text-brand-900 truncate max-w-xs md:max-w-md">
-                    {selectedProject.title}
-                  </span>
-                </div>
-
-                {/* Article Content */}
-                <div className="max-w-6xl mx-auto w-full px-6 py-12 md:py-16 space-y-10 animate-fade-in-up">
-                  
-                  <div className="space-y-6">
-                    <div className="flex flex-wrap gap-3">
-                        <span className={`text-xs uppercase font-bold px-3 py-1 rounded-full tracking-wide ${
-                          selectedProject.status === 'Ongoing' ? 'bg-accent-100 text-accent-800' : 'bg-gray-100 text-gray-700'
-                        }`}>
-                          {selectedProject.status}
-                        </span>
-                        {selectedProject.github && (
-                          <a href={selectedProject.github} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-xs uppercase font-bold px-3 py-1 rounded-full bg-academic-800 text-white hover:bg-black transition-colors">
-                            <Github size={12} /> Repository
-                          </a>
-                        )}
-                    </div>
-                    <h1 className="text-3xl md:text-5xl font-serif font-bold text-brand-900 leading-tight">
-                      {selectedProject.title}
-                    </h1>
-                  </div>
-
-                  {/* Render Dynamic Content from File */}
-                  <div className="min-h-[200px] bg-white rounded-xl p-8 border border-brand-100 shadow-sm markdown-content">
-                    {isLoadingContent ? (
-                        <div className="flex items-center justify-center py-20 text-brand-600">
-                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-600"></div>
-                        </div>
-                    ) : (
-                        <div 
-                          className="prose prose-lg prose-indigo max-w-none"
-                          dangerouslySetInnerHTML={{ __html: projectContent }} 
-                        />
-                    )}
-                  </div>
-
-                  {/* Footer Navigation */}
-                  <div className="pt-12 mt-12 border-t border-brand-100 flex justify-center">
-                    <button 
-                        onClick={() => setSelectedProject(null)}
-                        className="px-8 py-3 bg-brand-900 text-white font-bold rounded-xl hover:bg-brand-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                    >
-                      View All Research
-                    </button>
-                  </div>
-
-                </div>
+              <div class="metric">
+                <div class="metric-value">3</div>
+                <div class="metric-label">Active research tracks</div>
               </div>
-            )}
+              <div class="metric">
+                <div class="metric-value">11</div>
+                <div class="metric-label">Core method interests</div>
+              </div>
+            </div>
+          </article>
 
+          <aside class="highlight-card">
+            <h2>Current Focus</h2>
+            <ul class="focus-list">
+              <li>Multivariate random forest methods for multi-omics integration</li>
+              <li>Epigenetic biomarkers of dementia and cognitive resilience</li>
+              <li>Predictive models for treatment response in oncology</li>
+              <li>Robust variable selection and interpretation in high-dimensional data</li>
+            </ul>
+            <div class="pill-row" style="margin-top: 1rem;">
+              <span class="pill">Multi-omics</span>
+              <span class="pill">Statistical Learning</span>
+              <span class="pill">Biomarker Detection</span>
+              <span class="pill">Random Forest</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="research">
+        <div class="container reveal">
+          <header class="section-header">
+            <h2 class="section-title">Research Projects</h2>
+            <p class="section-note">Method-driven and disease-focused projects, spanning model design to translational validation.</p>
+          </header>
+          <div class="grid projects">
+            <article class="card">
+              <h3>Multivariate Random Forest for Multi-omics Integration</h3>
+              <p>A random forest framework for integrated prediction and biomarker discovery across multiple omics modalities.</p>
+              <div class="pill-row">
+                <span class="pill">R</span>
+                <span class="pill">Method Development</span>
+                <span class="pill">Random Forest</span>
+              </div>
+              <div class="card-links">
+                <a href="https://github.com/noblegasss/multiRF-variable-selection" target="_blank" rel="noreferrer">Code</a>
+                <a href="research/mrf1.html">Project Page</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3>Epigenetic Biomarkers for Alzheimer’s and Cognitive Health</h3>
+              <p>Discovery and validation of blood-based DNA methylation signatures predictive of incident dementia in longitudinal cohorts.</p>
+              <div class="pill-row">
+                <span class="pill">Longitudinal Data</span>
+                <span class="pill">DNA Methylation</span>
+                <span class="pill">Statistical Modeling</span>
+              </div>
+              <div class="card-links">
+                <a href="research/p3.html">Project Page</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3>Prediction Models for Cancer Biomarkers</h3>
+              <p>Transcriptome-based models for chemotherapy response using matched colorectal tumor-organoid expression profiles.</p>
+              <div class="pill-row">
+                <span class="pill">Oncology</span>
+                <span class="pill">WGCNA</span>
+                <span class="pill">Meta-analysis</span>
+              </div>
+            </article>
           </div>
-        );
-      };
+        </div>
+      </section>
 
-      const rootElement = document.getElementById('root');
-      if (rootElement) {
-        const root = ReactDOM.createRoot(rootElement);
-        root.render(
-          <React.StrictMode>
-            <App />
-          </React.StrictMode>
-        );
+      <section class="section" id="publications">
+        <div class="container reveal">
+          <header class="section-header">
+            <h2 class="section-title">Selected Publications</h2>
+            <p class="section-note">Recent work in Alzheimer’s disease, epigenetics, and integrative machine learning.</p>
+          </header>
+          <div class="publications">
+            <article class="pub">
+              <div class="pub-title">DNA Methylation Signature of a Lifestyle-based Resilience Index for Cognitive Health</div>
+              <div class="pub-meta">Alzheimer’s Research & Therapy, 2025</div>
+              <div class="pub-links"><a href="https://doi.org/10.1186/s13195-025-01733-7" target="_blank" rel="noreferrer">DOI</a></div>
+            </article>
+            <article class="pub">
+              <div class="pub-title">Blood DNA methylation signature for incident dementia: Evidence from longitudinal cohorts</div>
+              <div class="pub-meta">Alzheimer’s & Dementia, 2025</div>
+              <div class="pub-links"><a href="https://doi.org/10.1002/alz.14496" target="_blank" rel="noreferrer">DOI</a></div>
+            </article>
+            <article class="pub">
+              <div class="pub-title">Enhancing chemotherapy response prediction via matched colorectal tumor-organoid gene expression analysis</div>
+              <div class="pub-meta">Translational Oncology, 2025</div>
+              <div class="pub-links"><a href="https://doi.org/10.1016/j.tranon.2024.102238" target="_blank" rel="noreferrer">DOI</a></div>
+            </article>
+            <article class="pub">
+              <div class="pub-title">An Integrative Multi-Omics Random Forest Framework for Robust Biomarker Discovery</div>
+              <div class="pub-meta">Preprint, 2025</div>
+              <div class="pub-links"><a href="https://www.biorxiv.org/content/10.1101/2025.03.05.641533v2.full.pdf" target="_blank" rel="noreferrer">PDF</a></div>
+            </article>
+            <article class="pub">
+              <div class="pub-title">Critical evaluation of the reliability of DNA methylation probes on the Illumina MethylationEPIC v1.0 BeadChip microarrays</div>
+              <div class="pub-meta">Epigenetics, 2024</div>
+              <div class="pub-links"><a href="https://doi.org/10.1080/15592294.2024.2333660" target="_blank" rel="noreferrer">DOI</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="news">
+        <div class="container reveal two-col">
+          <div>
+            <header class="section-header">
+              <h2 class="section-title">Recent News</h2>
+            </header>
+            <ul class="timeline">
+              <li><strong>Oct 2025</strong><span>Submitted NIH K99/R00, BrightFocus Fellowship, and Alzheimer’s Association AARFA proposals.</span></li>
+              <li><strong>May 2025</strong><span>Presented at STATGEN 2025 in Minneapolis, Minnesota.</span></li>
+              <li><strong>Sep 2024</strong><span>Started as a Postdoctoral Associate at the University of Miami.</span></li>
+              <li><strong>Aug 2024</strong><span>Defended Ph.D. dissertation and received the Award of Academic Merit.</span></li>
+            </ul>
+          </div>
+
+          <div id="education">
+            <header class="section-header">
+              <h2 class="section-title">Education</h2>
+            </header>
+            <ul class="timeline">
+              <li>
+                <strong>Ph.D. in Biostatistics, University of Miami</strong>
+                <span>Aug 2024 · Advisor: Chen, X. Steven, Ph.D. · Dissertation on integrative multi-omics random forest.</span>
+              </li>
+              <li>
+                <strong>M.S. in Statistics, The George Washington University</strong>
+                <span>May 2019</span>
+              </li>
+              <li>
+                <strong>B.S. in Economics Analysis & Actuarial Math, SUNY Binghamton</strong>
+                <span>May 2017</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="container reveal">
+          <div class="contact-wrap">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-note">Miami, FL · Open to research collaborations in computational biology and statistical methodology.</p>
+            <div class="links">
+              <a href="mailto:wei.zhang60@med.miami.edu">wei.zhang60@med.miami.edu</a>
+              <a href="https://github.com/noblegasss" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://scholar.google.com/citations?hl=en&user=BRtsZUAAAAAJ&view_op=list_works" target="_blank" rel="noreferrer">Google Scholar</a>
+              <a href="https://www.researchgate.net/profile/Wei-Zhang-980?ev=hdr_xprf" target="_blank" rel="noreferrer">ResearchGate</a>
+              <a href="https://linkedin.com/in/nova-weizhang" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">© <span id="year"></span> Wei Zhang</div>
+    </footer>
+
+    <script>
+      const menuBtn = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('#site-nav');
+
+      if (menuBtn && nav) {
+        menuBtn.addEventListener('click', () => {
+          const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('open', !expanded);
+        });
+
+        nav.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            menuBtn.setAttribute('aria-expanded', 'false');
+            nav.classList.remove('open');
+          });
+        });
       }
+
+      document.querySelector('#year').textContent = String(new Date().getFullYear());
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.14 }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>
