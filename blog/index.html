@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog — Wei Zhang</title>
+    <meta name="description" content="Technical notes on tools and side projects by Wei Zhang." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f3f7f5;
+        --surface: #ffffff;
+        --surface-soft: #eef4f1;
+        --text: #10231d;
+        --text-soft: #4a635a;
+        --line: #d6e3dd;
+        --brand: #0f766e;
+        --brand-strong: #0b5f58;
+        --accent: #b45309;
+        --shadow: 0 20px 40px -26px rgba(16, 35, 29, 0.35);
+        --radius: 16px;
+        --radius-sm: 12px;
+        --container: 860px;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body { margin: 0; padding: 0; }
+
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 15% 0%, #dcf3ea 0, transparent 34%),
+          radial-gradient(circle at 85% 10%, #ffe9cc 0, transparent 25%),
+          var(--bg);
+        line-height: 1.6;
+      }
+
+      a { color: inherit; }
+
+      .container {
+        width: min(var(--container), 100% - 2rem);
+        margin-inline: auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: rgba(243, 247, 245, 0.82);
+        border-bottom: 1px solid rgba(214, 227, 221, 0.85);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 0.65rem;
+        text-decoration: none;
+      }
+
+      .brand-name {
+        font-size: 1.06rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      .brand-tag {
+        font-size: 0.78rem;
+        color: var(--text-soft);
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border-radius: 999px;
+        padding: 0.5rem 0.9rem;
+        border: 1px solid var(--line);
+        background: var(--surface-soft);
+        color: var(--text-soft);
+        transition: 0.2s ease;
+      }
+
+      .btn:hover { background: #e4eeea; color: var(--text); }
+
+      .page-hero {
+        padding: 4rem 0 2rem;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--brand-strong);
+        background: #dcf3ea;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        margin-bottom: 0.85rem;
+      }
+
+      h1, h2, h3 { margin: 0; line-height: 1.15; }
+
+      h1 {
+        margin-top: 0.6rem;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-family: "Newsreader", serif;
+        font-weight: 600;
+      }
+
+      .hero-sub {
+        margin-top: 0.7rem;
+        color: var(--text-soft);
+        font-size: 1.02rem;
+        max-width: 50ch;
+      }
+
+      .posts {
+        padding: 0.5rem 0 4rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .post-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        text-decoration: none;
+        display: block;
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .post-card:hover {
+        box-shadow: var(--shadow);
+        border-color: #b6d4cc;
+      }
+
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.65rem;
+      }
+
+      .tag {
+        font-size: 0.73rem;
+        font-weight: 600;
+        color: var(--brand-strong);
+        background: #dcf3ea;
+        border-radius: 999px;
+        padding: 0.22rem 0.55rem;
+      }
+
+      .post-date {
+        font-size: 0.8rem;
+        color: var(--text-soft);
+      }
+
+      .post-card h2 {
+        font-family: "Newsreader", serif;
+        font-size: 1.45rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .post-card p {
+        color: var(--text-soft);
+        font-size: 0.97rem;
+        margin: 0;
+        max-width: 68ch;
+      }
+
+      .post-footer {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .pill {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--text-soft);
+        background: var(--surface-soft);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.22rem 0.55rem;
+      }
+
+      .read-more {
+        margin-left: auto;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--brand);
+        text-decoration: none;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--text-soft);
+        font-size: 0.87rem;
+        padding: 1rem 0 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">
+          <span class="brand-name">Wei Zhang</span>
+          <span class="brand-tag">Academic Portfolio</span>
+        </a>
+        <a class="btn" href="/">← Home</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="page-hero">
+          <span class="eyebrow">Writing</span>
+          <h1>Blog</h1>
+          <p class="hero-sub">Technical notes on tools and side projects I've built alongside my research.</p>
+        </div>
+
+        <div class="posts">
+          <a class="post-card" href="research-pipeline.html">
+            <div class="post-meta">
+              <span class="tag">Tool</span>
+              <span class="post-date">2026</span>
+            </div>
+            <h2>Building a Personal Research Pipeline with AI</h2>
+            <p>
+              Keeping up with new papers across journals and preprint servers is a constant challenge.
+              I built an automated pipeline that fetches, scores, and summarizes daily literature — so I can spend more time reading and less time searching.
+            </p>
+            <div class="post-footer">
+              <span class="pill">Literature Tracking</span>
+              <span class="pill">AI Scoring</span>
+              <span class="pill">Daily Digest</span>
+              <span class="pill">Self-hosted</span>
+              <span class="read-more">Read →</span>
+            </div>
+          </a>
+
+          <a class="post-card" href="bloomly.html">
+            <div class="post-meta">
+              <span class="tag">App</span>
+              <span class="post-date">2026</span>
+            </div>
+            <h2>Bloomly: An Atomic Knowledge Hub</h2>
+            <p>
+              Ideas rarely arrive fully formed — they grow through connection.
+              Bloomly is a personal knowledge app I built to capture atomic notes, link them into a network, and let AI help develop them further.
+            </p>
+            <div class="post-footer">
+              <span class="pill">Knowledge Management</span>
+              <span class="pill">AI-Powered</span>
+              <span class="pill">Network Graph</span>
+              <span class="pill">Web + iOS</span>
+              <span class="read-more">Read →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">© <span id="year"></span> Wei Zhang</div>
+    </footer>
+
+    <script>
+      document.querySelector('#year').textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>

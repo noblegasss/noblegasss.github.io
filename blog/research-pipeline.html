@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Building a Personal Research Pipeline with AI — Wei Zhang</title>
+    <meta name="description" content="An automated tool for fetching, scoring, and summarizing daily academic literature." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:opsz,ital,wght@6..72,0,400;6..72,0,600;6..72,1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f3f7f5;
+        --surface: #ffffff;
+        --surface-soft: #eef4f1;
+        --text: #10231d;
+        --text-soft: #4a635a;
+        --line: #d6e3dd;
+        --brand: #0f766e;
+        --brand-strong: #0b5f58;
+        --accent: #b45309;
+        --shadow: 0 20px 40px -26px rgba(16, 35, 29, 0.35);
+        --radius: 16px;
+        --radius-sm: 12px;
+        --container: 720px;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 15% 0%, #dcf3ea 0, transparent 34%),
+          radial-gradient(circle at 85% 10%, #ffe9cc 0, transparent 25%),
+          var(--bg);
+        line-height: 1.7;
+      }
+
+      a { color: var(--brand); }
+      a:hover { color: var(--brand-strong); }
+
+      .container {
+        width: min(var(--container), 100% - 2rem);
+        margin-inline: auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: rgba(243, 247, 245, 0.82);
+        border-bottom: 1px solid rgba(214, 227, 221, 0.85);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 0.65rem;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      .brand-name { font-size: 1rem; font-weight: 700; }
+      .brand-tag {
+        font-size: 0.75rem;
+        color: var(--text-soft);
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 600;
+        border-radius: 999px;
+        padding: 0.45rem 0.85rem;
+        border: 1px solid var(--line);
+        background: var(--surface-soft);
+        color: var(--text-soft);
+        transition: 0.2s ease;
+      }
+
+      .btn:hover { background: #e4eeea; color: var(--text); }
+
+      /* Article layout */
+      .post-wrap {
+        padding: 3.5rem 0 5rem;
+      }
+
+      .post-header {
+        margin-bottom: 2.5rem;
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.83rem;
+        color: var(--text-soft);
+        margin-bottom: 1.4rem;
+      }
+
+      .breadcrumb a { color: var(--brand); text-decoration: none; }
+      .breadcrumb a:hover { text-decoration: underline; }
+
+      .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-bottom: 0.85rem;
+      }
+
+      .tag {
+        font-size: 0.73rem;
+        font-weight: 600;
+        color: var(--brand-strong);
+        background: #dcf3ea;
+        border-radius: 999px;
+        padding: 0.22rem 0.55rem;
+      }
+
+      .pill {
+        font-size: 0.73rem;
+        font-weight: 600;
+        color: var(--text-soft);
+        background: var(--surface-soft);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.22rem 0.55rem;
+      }
+
+      h1 {
+        font-family: "Newsreader", serif;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0 0 0.7rem;
+      }
+
+      .post-subtitle {
+        font-size: 1.12rem;
+        color: var(--text-soft);
+        font-family: "Newsreader", serif;
+        font-style: italic;
+        margin: 0;
+      }
+
+      .divider {
+        border: none;
+        border-top: 1px solid var(--line);
+        margin: 2rem 0;
+      }
+
+      /* Prose */
+      .prose h2 {
+        font-family: "Newsreader", serif;
+        font-size: 1.45rem;
+        font-weight: 600;
+        margin: 2.2rem 0 0.7rem;
+        line-height: 1.25;
+      }
+
+      .prose h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin: 1.6rem 0 0.45rem;
+        color: var(--text);
+      }
+
+      .prose p {
+        margin: 0 0 1.1rem;
+        font-size: 1.02rem;
+      }
+
+      .prose ul {
+        margin: 0 0 1.1rem;
+        padding-left: 1.3rem;
+      }
+
+      .prose li {
+        margin-bottom: 0.35rem;
+        font-size: 1.02rem;
+      }
+
+      .prose a {
+        color: var(--brand);
+        font-weight: 500;
+      }
+
+      .callout {
+        background: var(--surface-soft);
+        border-left: 3px solid var(--brand);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: 0.9rem 1.1rem;
+        margin: 1.4rem 0;
+        font-size: 0.98rem;
+        color: var(--text-soft);
+      }
+
+      .arch-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        margin: 1rem 0 1.4rem;
+      }
+
+      .arch-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 0.9rem;
+      }
+
+      .arch-card .arch-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--brand-strong);
+        margin-bottom: 0.35rem;
+      }
+
+      .arch-card p {
+        margin: 0;
+        font-size: 0.93rem;
+        color: var(--text-soft);
+      }
+
+      .post-links {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.3rem;
+        margin-top: 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        align-items: center;
+      }
+
+      .post-links span {
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-right: 0.3rem;
+      }
+
+      .post-links a {
+        text-decoration: none;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.45rem 0.85rem;
+        background: var(--surface-soft);
+        font-size: 0.9rem;
+        color: var(--text-soft);
+        font-weight: 500;
+        transition: 0.2s ease;
+      }
+
+      .post-links a:hover { background: #e4eeea; color: var(--text); }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--text-soft);
+        font-size: 0.87rem;
+        padding: 1rem 0 2rem;
+      }
+
+      @media (max-width: 600px) {
+        .arch-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">
+          <span class="brand-name">Wei Zhang</span>
+          <span class="brand-tag">Academic Portfolio</span>
+        </a>
+        <a class="btn" href="index.html">← Blog</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container post-wrap">
+        <header class="post-header">
+          <nav class="breadcrumb" aria-label="breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="index.html">Blog</a>
+            <span>›</span>
+            <span>Research Pipeline</span>
+          </nav>
+
+          <div class="post-tags">
+            <span class="tag">Tool</span>
+            <span class="pill">Literature Tracking</span>
+            <span class="pill">AI Scoring</span>
+            <span class="pill">Daily Digest</span>
+            <span class="pill">Self-hosted</span>
+          </div>
+
+          <h1>Building a Personal Research Pipeline with AI</h1>
+          <p class="post-subtitle">An automated tool for fetching, scoring, and summarizing daily academic literature.</p>
+        </header>
+
+        <hr class="divider" />
+
+        <article class="prose">
+          <h2>The Problem</h2>
+          <p>
+            Staying current with new literature is one of the quieter burdens of academic life.
+            Relevant papers appear daily across Nature, Science, bioRxiv, and arXiv — often simultaneously, sometimes overlapping, rarely in one place.
+            The standard workflow (RSS feeds, journal alerts, Twitter/X threads) produces a firehose of titles that's easy to skim and equally easy to let pile up.
+          </p>
+          <p>
+            What I actually wanted was a tool that would do the first pass for me: retrieve new papers each morning, judge their relevance to my work, and surface the two or three I genuinely need to read — with enough context to decide whether to read the full paper or just the abstract.
+          </p>
+
+          <div class="callout">
+            The goal wasn't to replace reading. It was to replace the hour spent deciding <em>what</em> to read.
+          </div>
+
+          <h2>Features</h2>
+          <ul>
+            <li><strong>Multi-source coverage</strong> — monitors Nature, Science, bioRxiv, and arXiv daily, so new papers across journals and preprints show up in one place.</li>
+            <li><strong>AI scoring</strong> — each paper is rated across four dimensions: relevance to your topics, novelty, methodological rigor, and field impact. Only the top papers move on to full reports.</li>
+            <li><strong>Deep-read reports</strong> — for papers that pass the threshold, the tool generates a structured summary: plain-language abstract, methodology breakdown, key results, and notable figures.</li>
+            <li><strong>Personal archive</strong> — all reports and reading notes are saved locally and searchable through a web dashboard, so nothing gets lost.</li>
+            <li><strong>Configurable relevance</strong> — you define your research interests once in a config file; the AI judges papers against your topics specifically, not just general field importance.</li>
+          </ul>
+
+          <h2>Getting Started</h2>
+          <p>
+            Clone the repo and add your OpenAI or Gemini API key.
+            Edit the config file to describe your research interests — a few sentences about the topics and methods you care about is enough.
+            Set your score threshold (how selective you want the filter to be), then run the pipeline.
+          </p>
+          <p>
+            On the first run it will fetch recent papers and build your local archive.
+            After that, running it daily (e.g. via a cron job) keeps the archive current.
+            Open the web dashboard to browse scored papers, read reports, and add your own notes.
+            The dashboard also shows per-source analytics so you can see where the most relevant work has been appearing.
+          </p>
+
+          <h2>A Note on the Scoring</h2>
+          <p>
+            The scored list turns out to be more useful than the reports themselves.
+            Having a ranked set of papers each morning shifts the reading problem from "what do I look at first?" to "do I agree with this ranking?" — which is a much faster judgment to make.
+            The reports are there when you want depth; the scores are what you actually interact with every day.
+          </p>
+          <p>
+            The tool treats scores as a first filter, not a final verdict.
+            The goal is to narrow 40 new titles down to 5 worth reading — not to replace your own judgment about what matters.
+            If your interests change, update the config and re-run; the relevance profile is just a few lines of text.
+          </p>
+          <p>
+            The project is open source. If you work in a field where new preprints appear faster than you can track them, it's straightforward to adapt to your own topics and source journals.
+          </p>
+        </article>
+
+        <div class="post-links">
+          <span>Links</span>
+          <a href="https://github.com/noblegasss/research-pipeline" target="_blank" rel="noreferrer">GitHub →</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">© <span id="year"></span> Wei Zhang</div>
+    </footer>
+
+    <script>
+      document.querySelector('#year').textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>

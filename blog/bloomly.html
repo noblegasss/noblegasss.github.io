@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bloomly: An Atomic Knowledge Hub — Wei Zhang</title>
+    <meta name="description" content="A personal knowledge management app built to capture atomic notes, link them into a network, and let AI help them grow." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:opsz,ital,wght@6..72,0,400;6..72,0,600;6..72,1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f3f7f5;
+        --surface: #ffffff;
+        --surface-soft: #eef4f1;
+        --text: #10231d;
+        --text-soft: #4a635a;
+        --line: #d6e3dd;
+        --brand: #0f766e;
+        --brand-strong: #0b5f58;
+        --accent: #b45309;
+        --shadow: 0 20px 40px -26px rgba(16, 35, 29, 0.35);
+        --radius: 16px;
+        --radius-sm: 12px;
+        --container: 720px;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 15% 0%, #dcf3ea 0, transparent 34%),
+          radial-gradient(circle at 85% 10%, #ffe9cc 0, transparent 25%),
+          var(--bg);
+        line-height: 1.7;
+      }
+
+      a { color: var(--brand); }
+      a:hover { color: var(--brand-strong); }
+
+      .container {
+        width: min(var(--container), 100% - 2rem);
+        margin-inline: auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: rgba(243, 247, 245, 0.82);
+        border-bottom: 1px solid rgba(214, 227, 221, 0.85);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 0.65rem;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      .brand-name { font-size: 1rem; font-weight: 700; }
+      .brand-tag {
+        font-size: 0.75rem;
+        color: var(--text-soft);
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 600;
+        border-radius: 999px;
+        padding: 0.45rem 0.85rem;
+        border: 1px solid var(--line);
+        background: var(--surface-soft);
+        color: var(--text-soft);
+        transition: 0.2s ease;
+      }
+
+      .btn:hover { background: #e4eeea; color: var(--text); }
+
+      .post-wrap {
+        padding: 3.5rem 0 5rem;
+      }
+
+      .post-header {
+        margin-bottom: 2.5rem;
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.83rem;
+        color: var(--text-soft);
+        margin-bottom: 1.4rem;
+      }
+
+      .breadcrumb a { color: var(--brand); text-decoration: none; }
+      .breadcrumb a:hover { text-decoration: underline; }
+
+      .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-bottom: 0.85rem;
+      }
+
+      .tag {
+        font-size: 0.73rem;
+        font-weight: 600;
+        color: var(--brand-strong);
+        background: #dcf3ea;
+        border-radius: 999px;
+        padding: 0.22rem 0.55rem;
+      }
+
+      .pill {
+        font-size: 0.73rem;
+        font-weight: 600;
+        color: var(--text-soft);
+        background: var(--surface-soft);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.22rem 0.55rem;
+      }
+
+      h1 {
+        font-family: "Newsreader", serif;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0 0 0.7rem;
+      }
+
+      .post-subtitle {
+        font-size: 1.12rem;
+        color: var(--text-soft);
+        font-family: "Newsreader", serif;
+        font-style: italic;
+        margin: 0;
+      }
+
+      .divider {
+        border: none;
+        border-top: 1px solid var(--line);
+        margin: 2rem 0;
+      }
+
+      .prose h2 {
+        font-family: "Newsreader", serif;
+        font-size: 1.45rem;
+        font-weight: 600;
+        margin: 2.2rem 0 0.7rem;
+        line-height: 1.25;
+      }
+
+      .prose h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin: 1.6rem 0 0.45rem;
+      }
+
+      .prose p {
+        margin: 0 0 1.1rem;
+        font-size: 1.02rem;
+      }
+
+      .prose ul {
+        margin: 0 0 1.1rem;
+        padding-left: 1.3rem;
+      }
+
+      .prose li {
+        margin-bottom: 0.35rem;
+        font-size: 1.02rem;
+      }
+
+      .callout {
+        background: var(--surface-soft);
+        border-left: 3px solid var(--brand);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: 0.9rem 1.1rem;
+        margin: 1.4rem 0;
+        font-size: 0.98rem;
+        color: var(--text-soft);
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        margin: 1rem 0 1.4rem;
+      }
+
+      .feature-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 0.9rem;
+      }
+
+      .feature-card .feat-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--brand-strong);
+        margin-bottom: 0.35rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        font-size: 0.93rem;
+        color: var(--text-soft);
+      }
+
+      .stack-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0.6rem 0 1.4rem;
+      }
+
+      .stack-chip {
+        font-size: 0.82rem;
+        font-weight: 600;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 0.35rem 0.65rem;
+        color: var(--text-soft);
+      }
+
+      .post-links {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.3rem;
+        margin-top: 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        align-items: center;
+      }
+
+      .post-links span {
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-right: 0.3rem;
+      }
+
+      .post-links a {
+        text-decoration: none;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.45rem 0.85rem;
+        background: var(--surface-soft);
+        font-size: 0.9rem;
+        color: var(--text-soft);
+        font-weight: 500;
+        transition: 0.2s ease;
+      }
+
+      .post-links a:hover { background: #e4eeea; color: var(--text); }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--text-soft);
+        font-size: 0.87rem;
+        padding: 1rem 0 2rem;
+      }
+
+      @media (max-width: 600px) {
+        .feature-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">
+          <span class="brand-name">Wei Zhang</span>
+          <span class="brand-tag">Academic Portfolio</span>
+        </a>
+        <a class="btn" href="index.html">← Blog</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container post-wrap">
+        <header class="post-header">
+          <nav class="breadcrumb" aria-label="breadcrumb">
+            <a href="/">Home</a>
+            <span>›</span>
+            <a href="index.html">Blog</a>
+            <span>›</span>
+            <span>Bloomly</span>
+          </nav>
+
+          <div class="post-tags">
+            <span class="tag">App</span>
+            <span class="pill">Knowledge Management</span>
+            <span class="pill">AI-Powered</span>
+            <span class="pill">Network Graph</span>
+            <span class="pill">Web + iOS</span>
+          </div>
+
+          <h1>Bloomly: An Atomic Knowledge Hub</h1>
+          <p class="post-subtitle">A personal knowledge app built to capture atomic notes, link them into a network, and let AI help them grow.</p>
+        </header>
+
+        <hr class="divider" />
+
+        <article class="prose">
+          <h2>The Idea</h2>
+          <p>
+            I read a lot — papers, articles, lecture notes, random observations — and for years my notes lived in scattered files that I never returned to.
+            The problem wasn't capturing ideas; it was that isolated notes don't compound.
+            A thought written down once, filed away, is nearly as lost as one never written.
+          </p>
+          <p>
+            I wanted a system where ideas could accumulate and connect over time — something closer to a Zettelkasten than a document archive.
+            Small, atomic notes. Each one complete on its own. Each one able to link to others.
+            Over time, a network of thought rather than a pile of text.
+          </p>
+
+          <div class="callout">
+            The name "Bloomly" comes from this idea: notes that grow through connection, like a garden that tends itself.
+          </div>
+
+          <h2>Features</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feat-label">Atomic Notes</div>
+              <p>Write small, self-contained notes — one idea per card. A masonry grid keeps your whole collection visible at a glance.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feat-label">Network Graph</div>
+              <p>Link notes to each other and view the result as an interactive graph. Clusters emerge naturally, and unexpected connections become visible.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feat-label">AI Enhancement</div>
+              <p>Select any note and ask the AI to expand it, suggest related ideas, or sharpen the wording. Works with multiple models — choose based on the task.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feat-label">Folder Organization</div>
+              <p>Group notes into folders from the sidebar. Useful for keeping research topics, reading notes, and personal ideas in separate spaces.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feat-label">Cloud Sync</div>
+              <p>Notes sync across all your devices automatically. Your data is private and isolated to your account.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feat-label">iOS App</div>
+              <p>Available as a native iOS app, currently in public beta. Join via <a href="https://testflight.apple.com/join/gPTqcv2V" target="_blank" rel="noreferrer">TestFlight</a> to try it.</p>
+            </div>
+          </div>
+
+          <h2>How to Use It</h2>
+          <p>
+            Start by signing up at <a href="https://bloom-ly.net" target="_blank" rel="noreferrer">bloom-ly.net</a> — there's also a guest mode if you want to try it without an account.
+            Create your first note by typing a single idea into the input area. Keep it short and focused; one thought per note works better than trying to capture everything at once.
+          </p>
+          <p>
+            Once you have a few notes, start linking them. When two ideas relate to each other, draw a connection between the cards.
+            Switch to the graph view to see the network take shape — notes that share many links cluster together, while more isolated ideas sit on the edges.
+          </p>
+          <p>
+            To develop a note further, select it and use the AI panel. You can ask it to elaborate on the idea, find related concepts from your existing notes, or just rewrite it more clearly.
+            Use folders to keep different topics separated, or let everything sit in one space and let the graph show you the structure.
+          </p>
+
+          <h2>A Note on the Graph</h2>
+          <p>
+            The network graph isn't the feature you use most often — that's just writing and editing notes.
+            But it's the one that makes the app feel different from a regular notes tool.
+            Seeing a visual map of how your thinking connects over weeks or months is genuinely motivating in a way that a flat list of notes isn't.
+          </p>
+          <p>
+            Bloomly is live at <a href="https://bloom-ly.net" target="_blank" rel="noreferrer">bloom-ly.net</a> and free to use.
+            The iOS beta is available on <a href="https://testflight.apple.com/join/gPTqcv2V" target="_blank" rel="noreferrer">TestFlight</a>.
+          </p>
+        </article>
+
+        <div class="post-links">
+          <span>Links</span>
+          <a href="https://bloom-ly.net" target="_blank" rel="noreferrer">bloom-ly.net →</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">© <span id="year"></span> Wei Zhang</div>
+    </footer>
+
+    <script>
+      document.querySelector('#year').textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
